@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Credit Platform Documentation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <style>
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --secondary: #334155; --light: #f8fafc; --dark: #0f172a; --gray: #94a3b8; --border: #e2e8f0; --sidebar-width: 280px; }
+    * { margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; }
+    body { display:flex;min-height:100vh;background:#f1f5f9;color:var(--dark); }
+    .sidebar { width:var(--sidebar-width);background:#fff;border-right:1px solid var(--border);position:fixed;height:100vh;overflow-y:auto;padding:20px 0; }
+    .logo { display:flex;align-items:center;padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:20px; }
+    .logo-icon { background:var(--primary);color:#fff;width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold; }
+    .logo-text { font-size:24px;font-weight:700;color:var(--dark);margin-left:10px; }
+    .sidebar-section { margin-bottom:24px; }
+    .sidebar-title { padding:8px 20px;font-size:14px;text-transform:uppercase;color:var(--gray);font-weight:600; }
+    .sidebar-links { list-style:none; }
+    .sidebar-link { display:flex;align-items:center;padding:10px 20px 10px 30px;color:var(--secondary);text-decoration:none;position:relative;transition:all .2s;font-size:15px; }
+    .sidebar-link:hover { background:rgba(13,148,136,0.1);color:var(--primary); }
+    .sidebar-link.active { background:rgba(13,148,136,0.1);color:var(--primary);font-weight:600; }
+    .sidebar-link.active:before { content:'';position:absolute;left:0;top:0;width:4px;height:100%;background:var(--primary); }
+    .sidebar-link i { margin-right:12px;width:20px;text-align:center; }
+    .main-content { flex:1;margin-left:var(--sidebar-width);padding:20px 40px; }
+    .header { display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:10px; }
+    .header-title { font-size:28px;font-weight:700;color:var(--dark); }
+    .search-box { position:relative; }
+    .search-box input { width:300px;padding:10px 15px 10px 40px;border:1px solid var(--border);border-radius:8px;font-size:15px; }
+    .search-box i { position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray); }
+    .content-card { background:#fff;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.05);padding:30px;margin-bottom:30px; }
+    .card-title { display:flex;align-items:center;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:10px; }
+    .card-title i { color:var(--primary);margin-right:10px; }
+    .card-subtitle { font-size:16px;color:var(--secondary);margin-bottom:20px; }
+    .divider { height:1px;background:var(--border);margin:20px 0; }
+    .section-title { font-size:18px;font-weight:600;color:var(--dark);margin-bottom:10px; }
+    .section-content { font-size:15px;line-height:1.7;color:var(--secondary);margin-bottom:20px; }
+    .endpoint { border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px; }
+    .endpoint-header { background:#f1f5f9;padding:12px 20px;display:flex;align-items:center; }
+    .method.post { background:#10b981;color:#fff;padding:4px 10px;border-radius:4px;font-weight:600;margin-right:10px;font-size:13px; }
+    .endpoint-url { font-family:monospace;font-size:15px;color:var(--secondary); }
+    .endpoint-body { padding:20px; }
+    .param-table { width:100%;border-collapse:collapse;margin-bottom:20px; }
+    .param-table th, .param-table td { padding:12px 15px;text-align:left;border-bottom:1px solid var(--border); }
+    .param-table th { background:#f8fafc;font-weight:600;color:var(--dark); }
+    .required { color:#ef4444;font-size:12px; }
+    .code-block { background:#171818;border-radius:8px;padding:20px;overflow-x:auto;color:#f8fafc;font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo"><div class="logo-icon">🌱</div><div class="logo-text">CarbonDocs</div></div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Getting Started</div>
+      <ul class="sidebar-links">
+        <li><a href="#intro" class="sidebar-link active"><i class="fas fa-home"></i> Introduction</a></li>
+        <li><a href="#auth" class="sidebar-link"><i class="fas fa-id-badge"></i> Farmer Registration</a></li>
+        <li><a href="#mrv" class="sidebar-link"><i class="fas fa-leaf"></i> MRV Integration</a></li>
+        <li><a href="#security" class="sidebar-link"><i class="fas fa-lock"></i> Security</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">API Reference</div>
+      <ul class="sidebar-links">
+        <li><a href="#register" class="sidebar-link"><i class="fas fa-user-plus"></i> Register Farmer</a></li>
+        <li><a href="#estimate" class="sidebar-link"><i class="fas fa-chart-bar"></i> Estimate Carbon</a></li>
+        <li><a href="#issue" class="sidebar-link"><i class="fas fa-coins"></i> Issue Tokens</a></li>
+        <li><a href="#status" class="sidebar-link"><i class="fas fa-info-circle"></i> Transaction Status</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Help & Support</div>
+      <ul class="sidebar-links">
+        <li><a href="#faq" class="sidebar-link"><i class="fas fa-question-circle"></i> FAQs</a></li>
+        <li><a href="#tutorials" class="sidebar-link"><i class="fas fa-book"></i> Tutorials</a></li>
+        <li><a href="#contact" class="sidebar-link"><i class="fas fa-phone"></i> Contact Support</a></li>
+        <li><a href="#errors" class="sidebar-link"><i class="fas fa-exclamation-triangle"></i> Error Codes</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="header"><h1 class="header-title">Carbon Credit Platform API Docs</h1><div class="search-box"><i class="fas fa-search"></i><input type="text" placeholder="Search documentation..."></div></div>
+    <div id="intro" class="content-card">
+      <div class="card-title"><i class="fas fa-home"></i> Introduction</div>
+      <div class="card-subtitle">API for registering farmers, estimating carbon reductions, and issuing tokenized carbon credits on ICP blockchain.</div>
+      <div class="divider"></div>
+      <div class="section-content">Welcome to the Carbon Credit Platform. This documentation describes endpoints to manage farmer onboarding, carbon MRV (Monitoring, Reporting & Verification), and smart contract interactions for minting and tracking carbon tokens.</div>
+    </div>
+    <div id="register" class="content-card">
+      <div class="card-title"><i class="fas fa-user-plus"></i> Register Farmer</div>
+      <div class="card-subtitle">Enroll new farmer into the program.</div>
+      <div class="endpoint">
+        <div class="endpoint-header"><span class="method post">POST</span><span class="endpoint-url">/v1/farmers/register</span></div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table"><thead><tr><th>Parameter</th><th>Type</th><th>Description</th><th>Required</th></tr></thead><tbody>
+            <tr><td>name</td><td>string</td><td>Farmer's full name</td><td><span class="required">Yes</span></td></tr>
+            <tr><td>location</td><td>string</td><td>GPS coordinates</td><td><span class="required">Yes</span></td></tr>
+            <tr><td>farmSize</td><td>number</td><td>Area in hectares</td><td><span class="required">Yes</span></td></tr>
+            <tr><td>practices</td><td>array</td><td>Adopted practices list</td><td><span class="required">Yes</span></td></tr>
+          </tbody></table>
+          <div class="section-title">Example Request</div>
+          <div class="code-block"><pre><code class="language-json">{
+  "name": "Jane Doe",
+  "location": "-1.2921,36.8219",
+  "farmSize": 5.5,
+  "practices": ["no-till","agroforestry"]
+}</code></pre></div>
+          <div class="section-title">Example Response</div>
+          <div class="code-block"><pre><code class="language-json">{
+  "status":"success",
+  "farmerId":"FARM12345"
+}</code></pre></div>
+        </div>
+      </div>
+    </div>
+    <div id="estimate" class="content-card">
+      <div class="card-title"><i class="fas fa-chart-bar"></i> Estimate Carbon</div>
+      <div class="card-subtitle">Calculate CO₂e reduction.</div>
+      <div class="endpoint">
+        <div class="endpoint-header"><span class="method post">POST</span><span class="endpoint-url">/v1/carbon/estimate</span></div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table"><thead><tr><th>Parameter</th><th>Type</th><th>Description</th><th>Required</th></tr></thead><tbody>
+            <tr><td>farmerId</td><td>string</td><td>Registered ID</td><td><span class="required">Yes</span></td></tr>
+            <tr><td>period</td><td>string</td><td>YYYY-MM-DD to YYYY-MM-DD</td><td><span class="required">Yes</span></td></tr>
+          </tbody></table>
+          <div class="section-title">Example Request</div>
+          <div class="code-block"><pre><code class="language-json">{ "farmerId":"FARM12345","period":"2025-01-01 to 2025-12-31" }</code></pre></div>
+          <div class="section-title">Example Response</div>
+          <div class="code-block"><pre><code class="language-json">{ "status":"success","estimatedCO2e":12.3 }</code></pre></div>
+        </div>
+      </div>
+    </div>
+    <div id="issue" class="content-card">
+      <div class="card-title"><i class="fas fa-coins"></i> Issue Tokens</div>
+      <div class="card-subtitle">Mint carbon credits to farmer's ICP wallet.</div>
+      <div class="endpoint">
+        <div class="endpoint-header"><span class="method post">POST</span><span class="endpoint-url">/v1/credits/issue</span></div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table"><thead><tr><th>Parameter</th><th>Type</th><th>Description</th><th>Required</th></tr></thead><tbody>
+            <tr><td>farmerId</td><td>string</td><td>FARM ID</td><td><span class="required">Yes</span></td></tr>
+            <tr><td>amount</td><td>number</td><td>Tokens to mint</td><td><span class="required">Yes</span></td></tr>
+            <tr><td>walletAddress</td><td>string</td><td>ICP wallet</td><td><span class="required">Yes</span></td></tr>
+          </tbody></table>
+          <div class="section-title">Example Request</div>
+          <div class="code-block"><pre><code class="language-json">{ "farmerId":"FARM12345","amount":12.3,"walletAddress":"abcd-efgh-ijkl" }</code></pre></div>
+          <div class="section-title">Example Response</div>
+          <div class="code-block"><pre><code class="language-json">{ "status":"success","transactionId":"TXN67890" }</code></pre></div>
+        </div>
+      </div>
+    </div>
+    <div id="status" class="content-card">
+      <div class="card-title"><i class="fas fa-info-circle"></i> Transaction Status</div>
+      <div class="card-subtitle">Check token issuance status.</div>
+      <div class="endpoint">
+        <div class="endpoint-header"><span class="method post">POST</span><span class="endpoint-url">/v1/transactions/status</span></div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table"><thead><tr><th>Parameter</th><th>Type</th><th>Description</th><th>Required</th></tr></thead><tbody>
+            <tr><td>transactionId</td><td>string</td><td>TXN ID</td><td><span class="required">Yes</span></td></tr>
+          </tbody></table>
+          <div class="section-title">Example Request</div>
+          <div class="code-block"><pre><code class="language-json">{ "transactionId":"TXN67890" }</code></pre></div>
+          <div class="section-title">Example Response</div>
+          <div class="code-block"><pre><code class="language-json">{ "status":"completed","timestamp":"2025-07-25T06:30:00Z" }</code></pre></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.sidebar-link').forEach(link => link.addEventListener('click', e => { e.preventDefault(); document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active')); link.classList.add('active'); document.getElementById(link.getAttribute('href').substring(1)).scrollIntoView({ behavior: 'smooth' }); }));
+    </script>
+  </div>
+</body>
+</html>

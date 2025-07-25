@@ -1,0 +1,3592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Credit Platform Documentation - Empowering Climate-Smart Agriculture</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <style>
+    :root { 
+      --primary: #0d9488; 
+      --primary-dark: #0f766e; 
+      --secondary: #334155; 
+      --light: #f8fafc; 
+      --dark: #0f172a; 
+      --gray: #94a3b8; 
+      --border: #e2e8f0; 
+      --sidebar-width: 320px;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --info: #3b82f6;
+    }
+    
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    }
+    
+    body { 
+      display: flex; 
+      min-height: 100vh; 
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); 
+      color: var(--dark); 
+    }
+    
+    .sidebar { 
+      width: var(--sidebar-width); 
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); 
+      border-right: 1px solid var(--border); 
+      position: fixed; 
+      height: 100vh; 
+      overflow-y: auto; 
+      padding: 20px 0; 
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .logo { 
+      display: flex; 
+      align-items: center; 
+      padding: 0 20px 20px; 
+      border-bottom: 2px solid var(--border); 
+      margin-bottom: 20px; 
+    }
+    
+    .logo-icon { 
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); 
+      color: #fff; 
+      width: 45px; 
+      height: 45px; 
+      border-radius: 12px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 24px; 
+      font-weight: bold; 
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+    }
+    
+    .logo-text { 
+      font-size: 24px; 
+      font-weight: 700; 
+      color: var(--dark); 
+      margin-left: 12px; 
+    }
+    
+    .sidebar-section { 
+      margin-bottom: 28px; 
+    }
+    
+    .sidebar-title { 
+      padding: 8px 20px; 
+      font-size: 13px; 
+      text-transform: uppercase; 
+      color: var(--gray); 
+      font-weight: 600; 
+      letter-spacing: 0.5px;
+    }
+    
+    .sidebar-links { 
+      list-style: none; 
+    }
+    
+    .sidebar-link { 
+      display: flex; 
+      align-items: center; 
+      padding: 12px 20px 12px 30px; 
+      color: var(--secondary); 
+      text-decoration: none; 
+      position: relative; 
+      transition: all 0.3s ease; 
+      font-size: 15px; 
+      border-radius: 0 25px 25px 0;
+      margin-right: 10px;
+    }
+    
+    .sidebar-link:hover { 
+      background: linear-gradient(90deg, rgba(13,148,136,0.1) 0%, rgba(13,148,136,0.05) 100%); 
+      color: var(--primary); 
+      transform: translateX(5px);
+    }
+    
+    .sidebar-link.active { 
+      background: linear-gradient(90deg, rgba(13,148,136,0.15) 0%, rgba(13,148,136,0.08) 100%); 
+      color: var(--primary); 
+      font-weight: 600; 
+    }
+    
+    .sidebar-link.active:before { 
+      content: ''; 
+      position: absolute; 
+      left: 0; 
+      top: 0; 
+      width: 4px; 
+      height: 100%; 
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%); 
+      border-radius: 0 2px 2px 0;
+    }
+    
+    .sidebar-link i { 
+      margin-right: 14px; 
+      width: 20px; 
+      text-align: center; 
+    }
+    
+    .main-content { 
+      flex: 1; 
+      margin-left: var(--sidebar-width); 
+      padding: 20px 40px; 
+      min-width: 0;
+      max-width: calc(100vw - var(--sidebar-width));
+      box-sizing: border-box;
+    }
+    
+    .header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-bottom: 30px; 
+      border-bottom: 2px solid var(--border); 
+      padding-bottom: 15px; 
+      background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .header-title { 
+      font-size: 32px; 
+      font-weight: 700; 
+      color: var(--dark); 
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .search-box { 
+      position: relative; 
+    }
+    
+    .search-box input { 
+      width: 320px; 
+      padding: 12px 18px 12px 45px; 
+      border: 2px solid var(--border); 
+      border-radius: 25px; 
+      font-size: 15px; 
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.9);
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+    }
+    
+    .search-box i { 
+      position: absolute; 
+      left: 15px; 
+      top: 50%; 
+      transform: translateY(-50%); 
+      color: var(--gray); 
+    }
+    
+    .content-card { 
+      background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%); 
+      border-radius: 16px; 
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+      padding: 35px; 
+      margin-bottom: 35px; 
+      border: 1px solid rgba(13, 148, 136, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .content-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    }
+    
+    .card-title { 
+      display: flex; 
+      align-items: center; 
+      font-size: 24px; 
+      font-weight: 700; 
+      color: var(--dark); 
+      margin-bottom: 12px; 
+    }
+    
+    .card-title i { 
+      color: var(--primary); 
+      margin-right: 12px; 
+      font-size: 26px;
+    }
+    
+    .card-subtitle { 
+      font-size: 17px; 
+      color: var(--secondary); 
+      margin-bottom: 25px; 
+      font-weight: 500;
+    }
+    
+    .divider { 
+      height: 2px; 
+      background: linear-gradient(90deg, var(--primary) 0%, transparent 100%); 
+      margin: 25px 0; 
+      border-radius: 1px;
+    }
+    
+    .section-title { 
+      font-size: 20px; 
+      font-weight: 600; 
+      color: var(--dark); 
+      margin-bottom: 15px; 
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .section-title:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .section-content { 
+      font-size: 16px; 
+      line-height: 1.8; 
+      color: var(--secondary); 
+      margin-bottom: 25px; 
+    }
+    
+    .endpoint { 
+      border: 2px solid var(--border); 
+      border-radius: 12px; 
+      overflow: hidden; 
+      margin-bottom: 25px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .endpoint-header { 
+      background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 100%); 
+      padding: 15px 25px; 
+      display: flex; 
+      align-items: center; 
+    }
+    
+    .method.post { 
+      background: linear-gradient(135deg, var(--success) 0%, #059669 100%); 
+      color: #fff; 
+      padding: 6px 14px; 
+      border-radius: 20px; 
+      font-weight: 600; 
+      margin-right: 15px; 
+      font-size: 13px; 
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    }
+    
+    .method.get { 
+      background: linear-gradient(135deg, var(--info) 0%, #2563eb 100%); 
+      color: #fff; 
+      padding: 6px 14px; 
+      border-radius: 20px; 
+      font-weight: 600; 
+      margin-right: 15px; 
+      font-size: 13px; 
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    }
+    
+    .endpoint-url { 
+      font-family: 'Consolas', 'Monaco', monospace; 
+      font-size: 16px; 
+      color: var(--secondary); 
+      font-weight: 600;
+    }
+    
+    .endpoint-body { 
+      padding: 25px; 
+    }
+    
+    .param-table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-bottom: 25px; 
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .param-table th, .param-table td { 
+      padding: 15px 18px; 
+      text-align: left; 
+      border-bottom: 1px solid var(--border); 
+    }
+    
+    .param-table th { 
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); 
+      font-weight: 600; 
+      color: var(--dark); 
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .param-table tr:hover {
+      background: rgba(13, 148, 136, 0.02);
+    }
+    
+    .required { 
+      color: var(--error); 
+      font-size: 12px; 
+      font-weight: 600;
+    }
+    
+    .code-block { 
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); 
+      border-radius: 12px; 
+      padding: 25px; 
+      overflow-x: auto; 
+      color: #f8fafc; 
+      font-size: 14px; 
+      font-family: 'Consolas', 'Monaco', monospace;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border: 1px solid #404040;
+    }
+    
+    .info-box {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 4px solid var(--info);
+    }
+    
+    .warning-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 4px solid var(--warning);
+    }
+    
+    .success-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 4px solid var(--success);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 5px;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+    
+    .feature-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid rgba(13, 148, 136, 0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    
+    .feature-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    
+    .feature-description {
+      font-size: 15px;
+      color: var(--secondary);
+      line-height: 1.6;
+    }
+    
+    ul.custom-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    ul.custom-list li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    ul.custom-list li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+    
+    .nested-list {
+      list-style: circle;
+      padding-left: 25px;
+      margin-top: 10px;
+    }
+    
+    .nested-list li {
+      padding-left: 0;
+      margin-bottom: 8px;
+    }
+    
+    .nested-list li:before {
+      display: none;
+    }
+    
+    @media (max-width: 1024px) {
+      .sidebar {
+        width: 280px;
+      }
+      
+      .main-content {
+        margin-left: 280px;
+        padding: 15px 20px;
+      }
+      
+      .search-box input {
+        width: 250px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      
+      .main-content {
+        margin-left: 0;
+      }
+      
+      .header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text">CarbonDocs</div>
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-title">Getting Started</div>
+      <ul class="sidebar-links">
+        <li><a href="#intro" class="sidebar-link active"><i class="fas fa-home"></i> Introduction</a></li>
+        <li><a href="#overview" class="sidebar-link"><i class="fas fa-seedling"></i> Platform Overview</a></li>
+        <li><a href="#farmer-benefits" class="sidebar-link"><i class="fas fa-hand-holding-usd"></i> Farmer Benefits</a></li>
+        <li><a href="#getting-started" class="sidebar-link"><i class="fas fa-play-circle"></i> Getting Started</a></li>
+        <li><a href="#auth" class="sidebar-link"><i class="fas fa-id-badge"></i> Farmer Registration</a></li>
+      </ul>
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-title">MRV & Carbon Science</div>
+      <ul class="sidebar-links">
+        <li><a href="#mrv" class="sidebar-link"><i class="fas fa-leaf"></i> MRV Methods</a></li>
+        <li><a href="#practices" class="sidebar-link"><i class="fas fa-tractor"></i> Eligible Practices</a></li>
+        <li><a href="#measurement" class="sidebar-link"><i class="fas fa-chart-line"></i> Carbon Measurement</a></li>
+        <li><a href="#verification" class="sidebar-link"><i class="fas fa-shield-alt"></i> Verification Process</a></li>
+      </ul>
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-title">Technical Integration</div>
+      <ul class="sidebar-links">
+        <li><a href="#models" class="sidebar-link"><i class="fas fa-database"></i> Data Models</a></li>
+        <li><a href="#icp" class="sidebar-link"><i class="fas fa-network-wired"></i> ICP Integration</a></li>
+        <li><a href="#setup" class="sidebar-link"><i class="fas fa-cogs"></i> Setup & Deployment</a></li>
+        <li><a href="#security" class="sidebar-link"><i class="fas fa-lock"></i> Security</a></li>
+      </ul>
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-title">API Reference</div>
+      <ul class="sidebar-links">
+        <li><a href="#register" class="sidebar-link"><i class="fas fa-user-plus"></i> Register Farmer</a></li>
+        <li><a href="#estimate" class="sidebar-link"><i class="fas fa-chart-bar"></i> Estimate Carbon</a></li>
+        <li><a href="#issue" class="sidebar-link"><i class="fas fa-coins"></i> Issue Tokens</a></li>
+        <li><a href="#status" class="sidebar-link"><i class="fas fa-info-circle"></i> Transaction Status</a></li>
+        <li><a href="#marketplace" class="sidebar-link"><i class="fas fa-store"></i> Marketplace API</a></li>
+      </ul>
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-title">Resources & Support</div>
+      <ul class="sidebar-links">
+        <li><a href="#case-studies" class="sidebar-link"><i class="fas fa-file-alt"></i> Case Studies</a></li>
+        <li><a href="#calculator" class="sidebar-link"><i class="fas fa-calculator"></i> Carbon Calculator</a></li>
+        <li><a href="#faq" class="sidebar-link"><i class="fas fa-question-circle"></i> FAQs</a></li>
+        <li><a href="#tutorials" class="sidebar-link"><i class="fas fa-book"></i> Tutorials</a></li>
+        <li><a href="#contact" class="sidebar-link"><i class="fas fa-phone"></i> Contact Support</a></li>
+        <li><a href="#errors" class="sidebar-link"><i class="fas fa-exclamation-triangle"></i> Error Codes</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h1 class="header-title">Carbon Credit Platform API Documentation</h1>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search documentation...">
+      </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <div id="intro" class="content-card">
+      <div class="card-title"><i class="fas fa-home"></i> Introduction</div>
+      <div class="card-subtitle">Comprehensive API for registering farmers, estimating carbon reductions, and issuing tokenized carbon credits on ICP blockchain.</div>
+      <div class="divider"></div>
+      <div class="section-content">
+        Welcome to the Carbon Credit Platform - a revolutionary system that empowers farmers to monetize their climate-smart agricultural practices. This documentation describes endpoints to manage farmer onboarding, carbon MRV (Monitoring, Reporting & Verification), and smart contract interactions for minting and tracking carbon credits.
+      </div>
+      <div class="section-content">
+        Our platform leverages both direct field sampling and modeling-based MRV, integrated with ICP smart contracts, to transparently reward farmers for climate-smart practices. By combining cutting-edge technology with rigorous scientific standards, we're building a sustainable future for agriculture.
+      </div>
+    </div>
+
+    <!-- Platform Overview -->
+    <div id="overview" class="content-card">
+      <div class="card-title"><i class="fas fa-seedling"></i> Platform Overview</div>
+      <div class="card-subtitle">Transforming agriculture through blockchain-verified carbon credits</div>
+      <div class="divider"></div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">50,000+</span>
+          <span class="stat-label">Registered Farmers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2.5M</span>
+          <span class="stat-label">Tons CO₂ Sequestered</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">1.2M</span>
+          <span class="stat-label">Hectares Enrolled</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">$45M</span>
+          <span class="stat-label">Farmer Payments</span>
+        </div>
+      </div>
+
+      <div class="section-title">How It Works</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+          <div class="feature-title">1. Farmer Registration</div>
+          <div class="feature-description">Farmers register their land and agricultural practices through our secure platform, providing GPS coordinates, farm size, and current practices.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-satellite"></i></div>
+          <div class="feature-title">2. Monitoring & Verification</div>
+          <div class="feature-description">Advanced satellite monitoring, IoT sensors, and field sampling techniques track carbon sequestration and emission reductions.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-coins"></i></div>
+          <div class="feature-title">3. Token Generation</div>
+          <div class="feature-description">Verified carbon reductions are converted to tradeable tokens on the ICP blockchain, providing transparent and immutable records.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="feature-title">4. Market Trading</div>
+          <div class="feature-description">Farmers can sell their carbon credits on our integrated marketplace or external platforms, generating additional income streams.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Farmer Benefits -->
+    <div id="farmer-benefits" class="content-card">
+      <div class="card-title"><i class="fas fa-hand-holding-usd"></i> Benefits for Farmers</div>
+      <div class="card-subtitle">Discover how our platform creates value for agricultural communities</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">Financial Benefits</div>
+      <div class="section-content">
+        <ul class="custom-list">
+          <li><strong>Additional Revenue Stream:</strong> Earn $15-50 per ton of CO₂ sequestered annually</li>
+          <li><strong>Premium Pricing:</strong> Access to verified carbon credit markets with transparent pricing</li>
+          <li><strong>Long-term Contracts:</strong> Multi-year agreements provide income stability</li>
+          <li><strong>Performance Bonuses:</strong> Extra rewards for exceeding sequestration targets</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Environmental Impact</div>
+      <div class="section-content">
+        <ul class="custom-list">
+          <li><strong>Soil Health Improvement:</strong> Increased organic matter and water retention</li>
+          <li><strong>Biodiversity Enhancement:</strong> Support for beneficial insects and wildlife</li>
+          <li><strong>Water Quality Protection:</strong> Reduced runoff and nutrient leaching</li>
+          <li><strong>Climate Resilience:</strong> Better adaptation to weather extremes</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <strong>Success Story:</strong> Farmer John Kimani from Kiambu County increased his annual income by 35% while improving soil organic carbon by 2.1% over three years using cover cropping and reduced tillage practices.
+      </div>
+    </div>
+
+    <!-- Getting Started -->
+    <div id="getting-started" class="content-card">
+      <div class="card-title"><i class="fas fa-play-circle"></i> Getting Started Guide</div>
+      <div class="card-subtitle">Step-by-step onboarding for new farmers</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">Eligibility Requirements</div>
+      <div class="section-content">
+        <ul class="custom-list">
+          <li>Farm size: Minimum 0.5 hectares, maximum 1,000 hectares</li>
+          <li>Location: Currently available in Kenya, Uganda, Tanzania, and Ghana</li>
+          <li>Land tenure: Valid ownership or long-term lease agreement (minimum 5 years)</li>
+          <li>Practice adoption: Commitment to implement eligible climate-smart practices</li>
+          <li>Baseline data: Willingness to participate in initial soil sampling and surveys</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Onboarding Process</div>
+      <div class="section-content">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">1</div>
+            <div class="feature-title">Application Submission</div>
+            <div class="feature-description">Complete online registration with farm details, GPS coordinates, and practice intentions.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">2</div>
+            <div class="feature-title">Baseline Assessment</div>
+            <div class="feature-description">Field visit for soil sampling, practice verification, and establishment of baseline carbon levels.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">3</div>
+            <div class="feature-title">Contract Agreement</div>
+            <div class="feature-description">Sign participation agreement outlining practices, monitoring requirements, and payment terms.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">4</div>
+            <div class="feature-title">Implementation Support</div>
+            <div class="feature-description">Receive training, technical assistance, and initial resources to implement climate-smart practices.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong>Important:</strong> The onboarding process typically takes 4-6 weeks from application to active participation. Baseline measurements are crucial for accurate carbon credit calculations.
+      </div>
+    </div>
+
+    <!-- MRV Methods -->
+    <div id="mrv" class="content-card">
+      <div class="card-title"><i class="fas fa-leaf"></i> MRV Methods</div>
+      <div class="card-subtitle">Comprehensive Monitoring, Reporting & Verification systems</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">1. Direct Measurement (Field-Based)</div>
+      <div class="section-content">
+        Our gold-standard approach combines multiple measurement techniques for maximum accuracy:
+        
+        <div style="margin: 20px 0;">
+          <h4 style="color: var(--primary); margin-bottom: 10px;">🔬 Soil Sampling Protocol</h4>
+          <ul class="nested-list">
+            <li>Collect soil cores from representative plots using systematic grid sampling</li>
+            <li>Sample depths: 0-15cm, 15-30cm, and 30-45cm for comprehensive analysis</li>
+            <li>Laboratory analysis includes Soil Organic Carbon (SOC), bulk density, and pH</li>
+            <li>Sampling frequency: Baseline + annual monitoring for 5 years</li>
+            <li>Quality control: 10% duplicate samples and certified reference materials</li>
+          </ul>
+        </div>
+
+        <div style="margin: 20px 0;">
+          <h4 style="color: var(--primary); margin-bottom: 10px;">🌳 Biomass Measurement</h4>
+          <ul class="nested-list">
+            <li>Tree diameter at breast height (DBH) and total height measurements</li>
+            <li>Species-specific allometric equations for accurate carbon estimates</li>
+            <li>Above-ground and below-ground biomass calculations</li>
+            <li>Canopy cover assessment using densiometer or mobile apps</li>
+          </ul>
+        </div>
+
+        <div style="margin: 20px 0;">
+          <h4 style="color: var(--primary); margin-bottom: 10px;">📋 Activity Documentation</h4>
+          <ul class="nested-list">
+            <li>Detailed logs of tillage operations, fertilizer applications, and crop rotations</li>
+            <li>GPS-tagged photos of field conditions and practice implementation</li>
+            <li>Weather data integration from local meteorological stations</li>
+            <li>Mobile app for real-time data collection and farmer reporting</li>
+          </ul>
+        </div>
+
+        <div class="warning-box">
+          <strong>Challenges:</strong> High cost ($200-500 per farm), time-intensive field work, and logistical complexity in remote areas. Reserved for high-value projects and verification sampling.
+        </div>
+      </div>
+
+      <div class="section-title">2. Modeling-Based Estimation</div>
+      <div class="section-content">
+        Cost-effective scaling through validated models and remote sensing technology:
+        
+        <table class="param-table">
+          <thead>
+            <tr>
+              <th>Tool/Method</th>
+              <th>Purpose</th>
+              <th>Accuracy</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>COMET-Farm</strong></td>
+              <td>USDA-developed model for soil carbon and GHG emissions</td>
+              <td>±15-20%</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td><strong>Cool Farm Tool</strong></td>
+              <td>Global web calculator for farm-level carbon footprints</td>
+              <td>±20-25%</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td><strong>EX-ACT</strong></td>
+              <td>FAO carbon balance estimator for land use projects</td>
+              <td>±25-30%</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td><strong>ALU Tool</strong></td>
+              <td>Land use change and GHG emission analysis</td>
+              <td>±20%</td>
+              <td>Licensed</td>
+            </tr>
+            <tr>
+              <td><strong>Satellite Analytics</strong></td>
+              <td>NDVI, soil moisture, and vegetation monitoring</td>
+              <td>±10-15%</td>
+              <td>Moderate</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin: 20px 0;">
+          <h4 style="color: var(--primary); margin-bottom: 10px;">🛰️ Remote Sensing Integration</h4>
+          <ul class="nested-list">
+            <li><strong>Sentinel-2:</strong> 10m resolution for crop monitoring and land use verification</li>
+            <li><strong>Landsat 8/9:</strong> Long-term historical analysis and change detection</li>
+            <li><strong>Planet Labs:</strong> Daily 3m imagery for detailed practice verification</li>
+            <li><strong>Soil moisture data:</strong> SMAP satellite integration for drought monitoring</li>
+          </ul>
+        </div>
+
+        <div class="success-box">
+          <strong>Benefits:</strong> Highly scalable, cost-effective ($10-50 per farm), and enables real-time monitoring. Satellite data provides independent verification of farmer-reported activities.
+        </div>
+      </div>
+
+      <div class="section-title">3. Hybrid Approach</div>
+      <div class="section-content">
+        Our platform combines both methods for optimal cost-accuracy balance:
+        <ul class="custom-list">
+          <li><strong>Tier 1 Farms (>100 hectares):</strong> Direct measurement with annual soil sampling</li>
+          <li><strong>Tier 2 Farms (10-100 hectares):</strong> Modeling with periodic verification sampling</li>
+          <li><strong>Tier 3 Farms (<10 hectares):</strong> Pure modeling approach with satellite monitoring</li>
+          <li><strong>Quality Assurance:</strong> 5% random verification sampling across all tiers</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Eligible Practices -->
+    <div id="practices" class="content-card">
+      <div class="card-title"><i class="fas fa-tractor"></i> Eligible Climate-Smart Practices</div>
+      <div class="card-subtitle">Approved agricultural practices for carbon credit generation</div>
+      <div class="divider"></div>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+          <div class="feature-title">Cover Cropping</div>
+          <div class="feature-description">
+            Plant cover crops during fallow periods to protect soil and sequester carbon.
+            <br><strong>Potential:</strong> 0.5-1.5 tons CO₂/ha/year
+            <br><strong>Payment:</strong> $25-40 per ton
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-ban"></i></div>
+          <div class="feature-title">No-Till/Reduced Tillage</div>
+          <div class="feature-description">
+            Minimize soil disturbance to preserve soil structure and carbon.
+            <br><strong>Potential:</strong> 0.3-1.0 tons CO₂/ha/year
+            <br><strong>Payment:</strong> $20-35 per ton
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tree"></i></div>
+          <div class="feature-title">Agroforestry</div>
+          <div class="feature-description">
+            Integrate trees into agricultural systems for carbon storage and biodiversity.
+            <br><strong>Potential:</strong> 2.0-8.0 tons CO₂/ha/year
+            <br><strong>Payment:</strong> $30-50 per ton
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-recycle"></i></div>
+          <div class="feature-title">Crop Rotation</div>
+          <div class="feature-description">
+            Diversify crops to improve soil health and reduce emissions.
+            <br><strong>Potential:</strong> 0.2-0.8 tons CO₂/ha/year
+            <br><strong>Payment:</strong> $15-30 per ton
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+          <div class="feature-title">Composting</div>
+          <div class="feature-description">
+            Use organic waste to create carbon-rich soil amendments.
+            <br><strong>Potential:</strong> 0.4-1.2 tons CO₂/ha/year
+            <br><strong>Payment:</strong> $20-35 per ton
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-water"></i></div>
+          <div class="feature-title">Improved Irrigation</div>
+          <div class="feature-description">
+            Efficient water management reduces energy use and emissions.
+            <br><strong>Potential:</strong> 0.1-0.5 tons CO₂/ha/year
+            <br><strong>Payment:</strong> $15-25 per ton
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Combination Benefits:</strong> Farmers implementing multiple practices can achieve 3-12 tons CO₂/ha/year sequestration, potentially earning $150-600 per hectare annually from carbon credits alone.
+      </div>
+    </div>
+
+    <!-- Carbon Measurement -->
+    <div id="measurement" class="content-card">
+      <div class="card-title"><i class="fas fa-chart-line"></i> Carbon Measurement & Calculation</div>
+      <div class="card-subtitle">Scientific methodologies for accurate carbon quantification</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">Measurement Standards</div>
+      <div class="section-content">
+        Our platform adheres to internationally recognized standards:
+        <ul class="custom-list">
+          <li><strong>VCS (Verified Carbon Standard):</strong> Primary methodology for project validation</li>
+          <li><strong>Gold Standard:</strong> Enhanced requirements for sustainable development co-benefits</li>
+          <li><strong>ISO 14064:</strong> International standard for GHG quantification and reporting</li>
+          <li><strong>IPCC Guidelines:</strong> 2006 IPCC Guidelines for National GHG Inventories</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Carbon Pools Measured</div>
+      <div class="section-content">
+        <table class="param-table">
+          <thead>
+            <tr>
+              <th>Carbon Pool</th>
+              <th>Measurement Method</th>
+              <th>Frequency</th>
+              <th>Uncertainty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Soil Organic Carbon</strong></td>
+              <td>Laboratory analysis (Walkley-Black method)</td>
+              <td>Annual</td>
+              <td>±5-10%</td>
+            </tr>
+            <tr>
+              <td><strong>Above-ground Biomass</strong></td>
+              <td>Allometric equations, drone imagery</td>
+              <td>Bi-annual</td>
+              <td>±10-15%</td>
+            </tr>
+            <tr>
+              <td><strong>Below-ground Biomass</strong></td>
+              <td>Root:shoot ratios, soil coring</td>
+              <td>Annual</td>
+              <td>±15-25%</td>
+            </tr>
+            <tr>
+              <td><strong>Deadwood</strong></td>
+              <td>Direct measurement, decay models</td>
+              <td>Annual</td>
+              <td>±20-30%</td>
+            </tr>
+            <tr>
+              <td><strong>Litter</strong></td>
+              <td>Quadrat sampling, dry weight</td>
+              <td>Seasonal</td>
+              <td>±15-20%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-title">Calculation Methodology</div>
+      <div class="code-block">
+        <pre><code class="language-javascript">
+// Carbon sequestration calculation example
+function calculateCarbonSequestration(farmData) {
+  const {
+    soilCarbonChange,     // tons C/ha/year
+    biomassGrowth,        // tons C/ha/year
+    practiceEfficiency,   // 0.0 - 1.0
+    leakageDiscount,      // 0.0 - 0.2
+    buffer               // 0.1 - 0.3 (risk buffer)
+  } = farmData;
+  
+  // Total carbon sequestration
+  const totalSequestration = (soilCarbonChange + biomassGrowth) * practiceEfficiency;
+  
+  // Apply leakage discount
+  const adjustedSequestration = totalSequestration * (1 - leakageDiscount);
+  
+  // Apply conservative buffer
+  const finalSequestration = adjustedSequestration * (1 - buffer);
+  
+  // Convert to CO2 equivalent (multiply by 44/12)
+  const co2Equivalent = finalSequestration * 3.67;
+  
+  return {
+    totalSequestration,
+    co2Equivalent,
+    creditsGenerated: Math.floor(co2Equivalent * 100) / 100 // Round to 2 decimals
+  };
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Verification Process -->
+    <div id="verification" class="content-card">
+      <div class="card-title"><i class="fas fa-shield-alt"></i> Verification Process</div>
+      <div class="card-subtitle">Third-party validation and quality assurance</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">Verification Steps</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">1</div>
+          <div class="feature-title">Internal QA/QC</div>
+          <div class="feature-description">
+            Automated data validation, outlier detection, and consistency checks across all measurements and farmer reports.
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">2</div>
+          <div class="feature-title">Field Verification</div>
+          <div class="feature-description">
+            Random sampling of 10% of farms for independent verification by certified field technicians.
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">3</div>
+          <div class="feature-title">Satellite Cross-Check</div>
+          <div class="feature-description">
+            Remote sensing validation of reported practices using high-resolution satellite imagery and AI analysis.
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">4</div>
+          <div class="feature-title">Third-Party Audit</div>
+          <div class="feature-description">
+            Annual audits by VCS-accredited validation and verification bodies (VVBs) for final credit issuance.
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Verification Bodies</div>
+      <div class="section-content">
+        <table class="param-table">
+          <thead>
+            <tr>
+              <th>VVB Partner</th>
+              <th>Specialization</th>
+              <th>Accreditation</th>
+              <th>Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SCS Global Services</strong></td>
+              <td>Agriculture & Forestry</td>
+              <td>VCS, Gold Standard, ISO 14065</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td><strong>Bureau Veritas</strong></td>
+              <td>Land Use & Agriculture</td>
+              <td>VCS, CDM, ISO 14065</td>
+              <td>Africa, Europe</td>
+            </tr>
+            <tr>
+              <td><strong>SGS</strong></td>
+              <td>Environmental Services</td>
+              <td>VCS, Gold Standard</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td><strong>Control Union</strong></td>
+              <td>Sustainable Agriculture</td>
+              <td>VCS, Fairtrade, Organic</td>
+              <td>Developing Countries</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="success-box">
+        <strong>Verification Timeline:</strong> The complete verification process takes 4-8 weeks from data submission to credit issuance, with real-time status updates available through our API.
+      </div>
+    </div>
+
+    <!-- Data Models -->
+    <div id="models" class="content-card">
+      <div class="card-title"><i class="fas fa-database"></i> Data Models</div>
+      <div class="card-subtitle">TypeScript / Motoko interfaces for platform integration</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">Core Data Structures</div>
+      <div class="code-block">
+        <pre><code class="language-typescript">
+// Farmer registration record
+interface Farmer {
+  id: Text;                    // Unique farmer identifier
+  name: Text;                  // Full legal name
+  location: Text;              // GPS coordinates (lat,lng)
+  farmSize: Float;             // Area in hectares
+  practices: [Text];           // Array of adopted practices
+  registrationDate: Text;      // ISO 8601 timestamp
+  verificationStatus: Text;    // "pending" | "verified" | "rejected"
+  contactInfo: ContactInfo;
+  landTenure: LandTenureInfo;
+  baseline: BaselineData;
+}
+
+// Contact information
+interface ContactInfo {
+  phoneNumber: Text;
+  email: ?Text;                // Optional email
+  physicalAddress: Text;
+  preferredLanguage: Text;     // "en" | "sw" | "fr" | etc.
+  emergencyContact: Text;
+}
+
+// Land tenure documentation
+interface LandTenureInfo {
+  ownershipType: Text;         // "owned" | "leased" | "communal"
+  documentNumber: Text;        // Title deed or lease agreement number
+  expiryDate: ?Text;          // For leased land
+  legalVerification: Bool;     // Document verification status
+}
+
+// Baseline carbon measurements
+interface BaselineData {
+  soilOrganicCarbon: Float;    // Percentage or tons/ha
+  biomassCarbon: Float;        // tons C/ha
+  measurementDate: Text;
+  samplingPoints: [GPSPoint];
+  labResults: [LabResult];
+}
+
+// Carbon estimate record
+interface CarbonEstimate {
+  id: Text;
+  farmerId: Text;
+  period: Text;                // "YYYY-MM-DD to YYYY-MM-DD"
+  methodology: Text;           // "field-sampling" | "modeling" | "hybrid"
+  co2eSequestered: Float;      // tons CO2 equivalent
+  co2eAvoided: Float;          // tons CO2 equivalent from avoided emissions
+  practicesImplemented: [Practice];
+  confidence: Float;           // 0.0 - 1.0 confidence score
+  verificationStatus: Text;
+  timestamp: Text;
+  calculationDetails: CalculationBreakdown;
+}
+
+// Practice implementation details
+interface Practice {
+  type: Text;                  // "cover-cropping" | "no-till" | etc.
+  area: Float;                 // hectares covered
+  implementationDate: Text;
+  effectiveness: Float;        // 0.0 - 1.0 implementation quality
+  evidence: [Evidence];        // Photos, GPS tracks, etc.
+}
+
+// Evidence documentation
+interface Evidence {
+  type: Text;                  // "photo" | "gps-track" | "receipt" | etc.
+  url: Text;                   // IPFS hash or cloud storage URL
+  timestamp: Text;
+  gpsLocation: ?Text;
+  description: Text;
+}
+
+// Credit transaction record
+interface CreditTransaction {
+  txId: Text;                  // Blockchain transaction ID
+  farmerId: Text;
+  amount: Float;               // Number of credits
+  pricePerCredit: Float;       // USD per credit
+  totalValue: Float;           // Total payment in USD
+  walletAddress: Text;         // ICP wallet address
+  status: Text;                // "pending" | "completed" | "failed"
+  issuanceDate: Text;
+  vintageYear: Nat;            // Year of carbon sequestration
+  methodology: Text;
+  serialNumbers: [Text];       // VCS registry serial numbers
+}
+
+// Marketplace listing
+interface CreditListing {
+  listingId: Text;
+  sellerId: Text;              // Farmer or aggregator ID
+  credits: [CreditBatch];
+  pricePerCredit: Float;
+  totalCredits: Float;
+  description: Text;
+  cobenefits: [Text];          // Additional sustainability benefits
+  location: Text;              // Geographic origin
+  certifications: [Text];      // VCS, Gold Standard, etc.
+  listedDate: Text;
+  status: Text;                // "active" | "sold" | "expired"
+}
+
+// Credit batch information
+interface CreditBatch {
+  batchId: Text;
+  vintageYear: Nat;
+  methodology: Text;
+  quantity: Float;
+  verificationBody: Text;
+  projectId: Text;
+  additionalityProof: Text;
+}
+        </code></pre>
+      </div>
+
+      <div class="section-title">Error Handling Types</div>
+      <div class="code-block">
+        <pre><code class="language-typescript">
+// API Response wrapper
+type ApiResponse<T> = {
+  success: Bool;
+  data: ?T;
+  error: ?ApiError;
+  timestamp: Text;
+  requestId: Text;
+}
+
+// Error types
+type ApiError = {
+  code: Text;                  // "FARMER_NOT_FOUND" | "INVALID_GPS" | etc.
+  message: Text;
+  details: ?Text;
+  retryable: Bool;
+}
+
+// Validation result
+type ValidationResult = {
+  isValid: Bool;
+  errors: [ValidationError];
+  warnings: [ValidationWarning];
+}
+
+type ValidationError = {
+  field: Text;
+  code: Text;
+  message: Text;
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- ICP Integration -->
+    <div id="icp" class="content-card">
+      <div class="card-title"><i class="fas fa-network-wired"></i> ICP Blockchain Integration</div>
+      <div class="card-subtitle">Decentralized canisters and token standards</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">Canister Architecture</div>
+      <div class="section-content">
+        Our platform deploys multiple specialized canisters for optimal performance and security:
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <div class="feature-title">FarmerManager</div>
+            <div class="feature-description">
+              Handles farmer registration, profile management, and authentication. Stores encrypted personal data with privacy controls.
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-calculator"></i></div>
+            <div class="feature-title">CarbonEstimator</div>
+            <div class="feature-description">
+              Implements MRV logic, carbon calculations, and integrates with external APIs for satellite data and weather information.
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-coins"></i></div>
+            <div class="feature-title">TokenMinter</div>
+            <div class="feature-description">
+              Manages ICRC-1 compliant $CARBON token minting, burning, and transfers. Includes escrow functionality for marketplace trades.
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-store"></i></div>
+            <div class="feature-title">Marketplace</div>
+            <div class="feature-description">
+              Facilitates peer-to-peer trading of carbon credits with automated matching, price discovery, and settlement.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Token Standard Implementation</div>
+      <div class="section-content">
+        <p>Our $CARBON token implements the ICRC-1 standard for maximum compatibility:</p>
+        
+        <div class="code-block">
+          <pre><code class="language-motoko">
+// CARBON token canister (Motoko)
+import ICRC1 "mo:icrc1";
+import Principal "mo:base/Principal";
+import Time "mo:base/Time";
+
+actor CarbonToken = {
+  
+  // Token metadata
+  private let TOKEN_NAME = "Carbon Credit Token";
+  private let TOKEN_SYMBOL = "CARBON";
+  private let TOKEN_DECIMALS = 8;
+  private let TOKEN_FEE = 10_000; // 0.0001 CARBON
+  
+  // Minting authority (restricted to verified projects)
+  private stable var minting_authority = Principal.fromText("rdmx6-jaaaa-aaaah-qcaiq-cai");
+  
+  // Carbon credit metadata for each token
+  private stable var credit_metadata = Map.HashMap<Nat, CreditMetadata>(0, Nat.equal, Hash.hash);
+  
+  type CreditMetadata = {
+    vintageYear: Nat;
+    methodology: Text;
+    projectId: Text;
+    verificationBody: Text;
+    co2Equivalent: Float;
+    issuanceDate: Int;
+  };
+  
+  // Mint carbon credits (restricted function)
+  public shared(msg) func mint_carbon_credits(
+    to: ICRC1.Account,
+    amount: Nat,
+    metadata: CreditMetadata
+  ) : async ICRC1.TransferResult {
+    
+    // Verify caller is authorized minting authority
+    if (msg.caller != minting_authority) {
+      return #Err(#Unauthorized { message = "Only minting authority can mint credits" });
+    };
+    
+    // Store credit metadata
+    credit_metadata.put(amount, metadata);
+    
+    // Mint tokens
+    await ICRC1.mint({
+      to = to;
+      amount = amount;
+      memo = ?Text.encodeUtf8("Carbon credit issuance: " # metadata.projectId);
+      created_at_time = ?Nat64.fromNat(Int.abs(Time.now()));
+    });
+  };
+  
+  // Retire carbon credits (permanent removal from circulation)
+  public shared(msg) func retire_credits(
+    amount: Nat,
+    retirement_reason: Text
+  ) : async ICRC1.TransferResult {
+    
+    // Burn tokens to retirement address
+    let retirement_account = { 
+      owner = Principal.fromText("aaaaa-aa"); // Burn address
+      subaccount = null 
+    };
+    
+    await ICRC1.transfer({
+      from_subaccount = null;
+      to = retirement_account;
+      amount = amount;
+      fee = ?TOKEN_FEE;
+      memo = ?Text.encodeUtf8("Credit retirement: " # retirement_reason);
+      created_at_time = ?Nat64.fromNat(Int.abs(Time.now()));
+    });
+  };
+  
+  // Get credit metadata
+  public query func get_credit_metadata(token_id: Nat) : async ?CreditMetadata {
+    credit_metadata.get(token_id);
+  };
+  
+  // Batch transfer for marketplace efficiency
+  public shared(msg) func batch_transfer(
+    transfers: [ICRC1.TransferArgs]
+  ) : async [ICRC1.TransferResult] {
+    
+    var results: [ICRC1.TransferResult] = [];
+    
+    for (transfer_args in transfers.vals()) {
+      let result = await ICRC1.transfer(transfer_args);
+      results := Array.append(results, [result]);
+    };
+    
+    results;
+  };
+};
+          </code></pre>
+        </div>
+      </div>
+
+      <div class="section-title">Smart Contract Features</div>
+      <div class="section-content">
+        <ul class="custom-list">
+          <li><strong>Fractional Ownership:</strong> Credits divisible to 8 decimal places for small-scale trading</li>
+          <li><strong>Metadata Storage:</strong> On-chain storage of vintage year, methodology, and verification data</li>
+          <li><strong>Retirement Mechanism:</strong> Permanent removal of credits from circulation when used</li>
+          <li><strong>Batch Operations:</strong> Efficient batch transfers for marketplace and aggregator use</li>
+          <li><strong>Access Controls:</strong> Role-based permissions for minting, verification, and governance</li>
+          <li><strong>Audit Trail:</strong> Immutable transaction history for full transparency and compliance</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Setup & Deployment -->
+    <div id="setup" class="content-card">
+      <div class="card-title"><i class="fas fa-cogs"></i> Setup & Deployment</div>
+      <div class="card-subtitle">Local development and production deployment with DFX</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">Prerequisites</div>
+      <div class="section-content">
+        <ul class="custom-list">
+          <li><strong>DFX SDK:</strong> Version 0.15.0 or higher</li>
+          <li><strong>Node.js:</strong> Version 18.0+ for frontend development</li>
+          <li><strong>Rust:</strong> Latest stable version for canister development</li>
+          <li><strong>ICP Cycles:</strong> Minimum 10T cycles for mainnet deployment</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Project Initialization</div>
+      <div class="code-block">
+        <pre><code class="language-bash">
+# Create new project
+dfx new carbon-credit-platform --type=rust
+cd carbon-credit-platform
+
+# Initialize git repository
+git init
+git add .
+git commit -m "Initial project setup"
+
+# Install dependencies
+npm install
+cargo check
+
+# Configure dfx.json for multiple canisters
+cat > dfx.json << 'EOF'
+{
+  "version": 1,
+  "canisters": {
+    "farmer_manager": {
+      "type": "rust",
+      "package": "farmer_manager",
+      "candid": "src/farmer_manager/farmer_manager.did"
+    },
+    "carbon_estimator": {
+      "type": "rust", 
+      "package": "carbon_estimator",
+      "candid": "src/carbon_estimator/carbon_estimator.did"
+    },
+    "token_minter": {
+      "type": "rust",
+      "package": "token_minter", 
+      "candid": "src/token_minter/token_minter.did"
+    },
+    "marketplace": {
+      "type": "rust",
+      "package": "marketplace",
+      "candid": "src/marketplace/marketplace.did"
+    },
+    "frontend": {
+      "type": "assets",
+      "source": ["dist/"]
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    },
+    "ic": {
+      "providers": ["https://icp-api.io"],
+      "type": "persistent"
+    }
+  }
+}
+EOF
+        </code></pre>
+      </div>
+
+      <div class="section-title">Local Development</div>
+      <div class="code-block">
+        <pre><code class="language-bash">
+# Start local replica in background
+dfx start --background --clean
+
+# Deploy all canisters locally
+dfx deploy --network local
+
+# Check canister status
+dfx canister status --all --network local
+
+# Install frontend dependencies
+cd src/frontend
+npm install
+npm run build
+cd ../..
+
+# Deploy frontend
+dfx deploy frontend --network local
+
+# Test API endpoints
+dfx canister call farmer_manager register_farmer '(
+  record {
+    name = "John Kamau";
+    location = "-1.2921,36.8219";
+    farm_size = 5.5;
+    practices = vec {"no-till"; "cover-cropping"};
+  }
+)'
+        </code></pre>
+      </div>
+
+      <div class="section-title">Production Deployment</div>
+      <div class="code-block">
+        <pre><code class="language-bash">
+# Ensure you have cycles (minimum 10T for full deployment)
+dfx wallet balance --network ic
+
+# Deploy to IC mainnet (requires cycles)
+dfx deploy --network ic --with-cycles 2000000000000
+
+# Set up production environment variables
+dfx canister call token_minter set_minting_authority '(
+  principal "rdmx6-jaaaa-aaaah-qcaiq-cai"
+)' --network ic
+
+# Configure marketplace settings
+dfx canister call marketplace configure '(
+  record {
+    platform_fee = 0.025; // 2.5% platform fee
+    min_credit_price = 5.0; // $5 minimum per credit
+    max_listing_duration = 7776000; // 90 days in seconds
+  }
+)' --network ic
+
+# Verify deployment
+dfx canister id --all --network ic
+        </code></pre>
+      </div>
+
+      <div class="section-title">Environment Configuration</div>
+      <div class="section-content">
+        Create environment-specific configuration files:
+        
+        <div class="code-block">
+          <pre><code class="language-typescript">
+// config/environments.ts
+export const environments = {
+  local: {
+    DFX_NETWORK: 'local',
+    FARMER_MANAGER_CANISTER: 'rrkah-fqaaa-aaaaa-aaaaq-cai',
+    CARBON_ESTIMATOR_CANISTER: 'rno2w-sqaaa-aaaaa-aaacq-cai',
+    TOKEN_MINTER_CANISTER: 'rdmx6-jaaaa-aaaah-qcaiq-cai',
+    MARKETPLACE_CANISTER: 'renrk-eyaaa-aaaah-qcaoa-cai',
+    SATELITE_API_KEY: 'dev_key_12345',
+    WEATHER_API_KEY: 'weather_dev_key',
+    IPFS_GATEWAY: 'https://ipfs.io/ipfs/',
+  },
+  production: {
+    DFX_NETWORK: 'ic',
+    FARMER_MANAGER_CANISTER: 'by6od-j4aaa-aaaah-qcaaa-cai',
+    CARBON_ESTIMATOR_CANISTER: 'bw4dl-smaaa-aaaah-qcaaq-cai', 
+    TOKEN_MINTER_CANISTER: 'br5f7-7uaaa-aaaah-qcaea-cai',
+    MARKETPLACE_CANISTER: 'bs5l3-7iaaa-aaaah-qcaoa-cai',
+    SATELITE_API_KEY: process.env.SATELITE_API_KEY,
+    WEATHER_API_KEY: process.env.WEATHER_API_KEY,
+    IPFS_GATEWAY: 'https://gateway.pinata.cloud/ipfs/',
+  }
+};
+
+// Frontend integration
+export const getConfig = () => {
+  const network = process.env.DFX_NETWORK || 'local';
+  return environments[network as keyof typeof environments];
+};
+          </code></pre>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Deployment Costs:</strong> Full mainnet deployment costs approximately 8-12T cycles (~$10-15 USD). Budget additional cycles for ongoing operation and storage.
+      </div>
+    </div>
+
+    <!-- API Reference: Register Farmer -->
+    <div id="register" class="content-card">
+      <div class="card-title"><i class="fas fa-user-plus"></i> Register Farmer</div>
+      <div class="card-subtitle">Enroll new farmers into the carbon credit program</div>
+      <div class="divider"></div>
+      
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method post">POST</span>
+          <span class="endpoint-url">/v1/farmers/register</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>string</td>
+                <td>Farmer's full legal name (2-100 characters)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>location</td>
+                <td>string</td>
+                <td>GPS coordinates in "lat,lng" format (WGS84)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>farmSize</td>
+                <td>number</td>
+                <td>Farm area in hectares (0.5 - 1000.0)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>practices</td>
+                <td>array</td>
+                <td>List of climate-smart practices to implement</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>phoneNumber</td>
+                <td>string</td>
+                <td>Mobile phone number with country code</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>email</td>
+                <td>string</td>
+                <td>Email address for notifications (optional)</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>language</td>
+                <td>string</td>
+                <td>Preferred language: "en", "sw", "fr", etc.</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>landTenure</td>
+                <td>object</td>
+                <td>Land ownership/lease documentation</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Land Tenure Object</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ownershipType</td>
+                <td>string</td>
+                <td>"owned", "leased", or "communal"</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>documentNumber</td>
+                <td>string</td>
+                <td>Title deed or lease agreement reference</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>expiryDate</td>
+                <td>string</td>
+                <td>Lease expiry date (YYYY-MM-DD) if applicable</td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "name": "Jane Wanjiku Doe",
+  "location": "-1.2921,36.8219",
+  "farmSize": 5.5,
+  "practices": ["no-till", "agroforestry", "cover-cropping"],
+  "phoneNumber": "+254712345678",
+  "email": "jane.doe@example.com",
+  "language": "en",
+  "landTenure": {
+    "ownershipType": "owned",
+    "documentNumber": "NAIROBI/BLOCK12/567",
+    "expiryDate": null
+  }
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Success Response (201 Created)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "farmerId": "FARM12345",
+    "registrationDate": "2025-07-25T10:30:00Z",
+    "verificationStatus": "pending",
+    "estimatedOnboardingTime": "4-6 weeks",
+    "nextSteps": [
+      "Document verification (2-3 days)",
+      "Field assessment scheduling",
+      "Baseline measurement appointment",
+      "Training session enrollment"
+    ]
+  },
+  "message": "Farmer registration successful. Verification process initiated."
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Error Responses</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+// 400 Bad Request - Validation Error
+{
+  "status": "error",
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid request parameters",
+    "details": {
+      "farmSize": "Farm size must be between 0.5 and 1000 hectares",
+      "location": "GPS coordinates must be within supported regions"
+    }
+  }
+}
+
+// 409 Conflict - Duplicate Registration
+{
+  "status": "error", 
+  "error": {
+    "code": "FARMER_EXISTS",
+    "message": "Farmer already registered with this phone number",
+    "details": "Existing farmer ID: FARM67890"
+  }
+}
+
+// 422 Unprocessable Entity - Eligibility Issue
+{
+  "status": "error",
+  "error": {
+    "code": "ELIGIBILITY_FAILED",
+    "message": "Farm does not meet program requirements",
+    "details": "Location outside supported regions. Currently available in Kenya, Uganda, Tanzania, and Ghana."
+  }
+}
+            </code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Reference: Estimate Carbon -->
+    <div id="estimate" class="content-card">
+      <div class="card-title"><i class="fas fa-chart-bar"></i> Estimate Carbon Sequestration</div>
+      <div class="card-subtitle">Calculate CO₂ equivalent reduction and sequestration potential</div>
+      <div class="divider"></div>
+      
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method post">POST</span>
+          <span class="endpoint-url">/v1/carbon/estimate</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>farmerId</td>
+                <td>string</td>
+                <td>Registered farmer identifier</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>period</td>
+                <td>string</td>
+                <td>Estimation period (YYYY-MM-DD to YYYY-MM-DD)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>methodology</td>
+                <td>string</td>
+                <td>"field-sampling", "modeling", or "hybrid"</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>practices</td>
+                <td>array</td>
+                <td>Specific practices to include in calculation</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>includeBaseline</td>
+                <td>boolean</td>
+                <td>Include baseline measurements in calculation</td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "farmerId": "FARM12345",
+  "period": "2025-01-01 to 2025-12-31",
+  "methodology": "hybrid",
+  "practices": ["no-till", "agroforestry"],
+  "includeBaseline": true
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Success Response (200 OK)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "estimationId": "EST78901",
+    "farmerId": "FARM12345",
+    "period": "2025-01-01 to 2025-12-31",
+    "methodology": "hybrid",
+    "results": {
+      "totalCO2eSequestered": 12.3,
+      "totalCO2eAvoided": 4.7,
+      "netCO2eImpact": 17.0,
+      "creditsEligible": 15.3,
+      "confidenceScore": 0.85
+    },
+    "breakdown": {
+      "soilCarbonSequestration": 8.2,
+      "biomassCarbon": 4.1,
+      "emissionReductions": 4.7,
+      "buffer": 1.7,
+      "leakageDiscount": 0.0
+    },
+    "practiceContributions": [
+      {
+        "practice": "no-till",
+        "area": 3.0,
+        "co2eContribution": 6.8,
+        "confidence": 0.90
+      },
+      {
+        "practice": "agroforestry", 
+        "area": 2.5,
+        "co2eContribution": 10.2,
+        "confidence": 0.80
+      }
+    ],
+    "monetaryValue": {
+      "estimatedValue": 535.50,
+      "priceRange": {
+        "minimum": 459.00,
+        "maximum": 612.00
+      },
+      "currency": "USD"
+    },
+    "generatedAt": "2025-07-25T10:45:00Z",
+    "validUntil": "2025-08-25T10:45:00Z"
+  }
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Error Responses</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+// 404 Not Found - Farmer not registered
+{
+  "status": "error",
+  "error": {
+    "code": "FARMER_NOT_FOUND",
+    "message": "Farmer ID not found in system",
+    "retryable": false
+  }
+}
+
+// 400 Bad Request - Invalid period
+{
+  "status": "error",
+  "error": {
+    "code": "INVALID_PERIOD",
+    "message": "Period must be within current or future years only",
+    "details": "Historical estimates require baseline data"
+  }
+}
+            </code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Reference: Issue Tokens -->
+    <div id="issue" class="content-card">
+      <div class="card-title"><i class="fas fa-coins"></i> Issue Carbon Credit Tokens</div>
+      <div class="card-subtitle">Mint verified carbon credits to farmer's ICP wallet</div>
+      <div class="divider"></div>
+      
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method post">POST</span>
+          <span class="endpoint-url">/v1/credits/issue</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>farmerId</td>
+                <td>string</td>
+                <td>Verified farmer identifier</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>amount</td>
+                <td>number</td>
+                <td>Number of credits to issue (max 2 decimal places)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>walletAddress</td>
+                <td>string</td>
+                <td>ICP principal ID or account identifier</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>vintageYear</td>
+                <td>number</td>
+                <td>Year of carbon sequestration (2020-2030)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>methodology</td>
+                <td>string</td>
+                <td>Verification methodology used</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>projectId</td>
+                <td>string</td>
+                <td>Associated project identifier</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>verificationBody</td>
+                <td>string</td>
+                <td>Third-party verifier name</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "farmerId": "FARM12345",
+  "amount": 12.35,
+  "walletAddress": "abcd-efgh-ijkl-mnop-qrst-uvwx-yz12-3456",
+  "vintageYear": 2025,
+  "methodology": "VCS-VM0017",
+  "projectId": "KE-001-2025",
+  "verificationBody": "SCS Global Services"
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Success Response (201 Created)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "transactionId": "TXN67890",
+    "blockchainTxHash": "0x8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3a29",
+    "tokensMinted": 12.35,
+    "recipientWallet": "abcd-efgh-ijkl-mnop-qrst-uvwx-yz12-3456",
+    "serialNumbers": [
+      "KE-VCS-17-001-2025-001-12350000",
+      "KE-VCS-17-001-2025-002-12350000"
+    ],
+    "metadata": {
+      "vintageYear": 2025,
+      "methodology": "VCS-VM0017",
+      "projectId": "KE-001-2025",
+      "verificationBody": "SCS Global Services",
+      "issuanceDate": "2025-07-25T11:00:00Z",
+      "co2Equivalent": 12.35
+    },
+    "fees": {
+      "platformFee": 0.31,
+      "networkFee": 0.0001,
+      "totalFees": 0.3101
+    },
+    "status": "confirmed",
+    "confirmations": 12,
+    "estimatedProcessingTime": "2-5 minutes"
+  },
+  "message": "Carbon credits successfully minted and transferred"
+}
+            </code></pre>
+          </div>
+
+          <div class="warning-box">
+            <strong>Important:</strong> Token issuance requires prior verification by an accredited third party. Credits can only be issued for verified carbon sequestration activities.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Reference: Transaction Status -->
+    <div id="status" class="content-card">
+      <div class="card-title"><i class="fas fa-info-circle"></i> Transaction Status</div>
+      <div class="card-subtitle">Check the status of token issuance and transfers</div>
+      <div class="divider"></div>
+      
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method get">GET</span>
+          <span class="endpoint-url">/v1/transactions/{transactionId}</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Path Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>transactionId</td>
+                <td>string</td>
+                <td>Transaction identifier from issuance response</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+            <pre><code class="language-bash">
+GET /v1/transactions/TXN67890
+Authorization: Bearer your_api_key_here
+            </code></pre>
+          </div>
+
+          <div class="section-title">Success Response (200 OK)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "transactionId": "TXN67890",
+    "type": "credit_issuance",
+    "status": "completed",
+    "farmerId": "FARM12345",
+    "amount": 12.35,
+    "walletAddress": "abcd-efgh-ijkl-mnop-qrst-uvwx-yz12-3456",
+    "blockchainDetails": {
+      "txHash": "0x8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3a29",
+      "blockNumber": 1234567,
+      "confirmations": 48,
+      "gasUsed": 125000
+    },
+    "timeline": [
+      {
+        "status": "initiated",
+        "timestamp": "2025-07-25T11:00:00Z",
+        "description": "Transaction initiated by system"
+      },
+      {
+        "status": "validated",
+        "timestamp": "2025-07-25T11:00:15Z", 
+        "description": "Request validation completed"
+      },
+      {
+        "status": "blockchain_submitted",
+        "timestamp": "2025-07-25T11:00:30Z",
+        "description": "Transaction submitted to blockchain"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-07-25T11:02:45Z",
+        "description": "Transaction confirmed on blockchain"
+      },
+      {
+        "status": "completed",
+        "timestamp": "2025-07-25T11:05:00Z",
+        "description": "Tokens successfully transferred to recipient"
+      }
+    ],
+    "metadata": {
+      "vintageYear": 2025,
+      "methodology": "VCS-VM0017",
+      "serialNumbers": ["KE-VCS-17-001-2025-001-12350000"],
+      "verificationBody": "SCS Global Services"
+    },
+    "createdAt": "2025-07-25T11:00:00Z",
+    "completedAt": "2025-07-25T11:05:00Z",
+    "processingTime": "5 minutes"
+  }
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Status Values</div>
+          <div class="section-content">
+            <table class="param-table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Description</th>
+                  <th>Is Final</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>initiated</strong></td>
+                  <td>Transaction request received and queued</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td><strong>validating</strong></td>
+                  <td>Verifying request parameters and permissions</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td><strong>blockchain_submitted</strong></td>
+                  <td>Transaction submitted to blockchain network</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td><strong>pending</strong></td>
+                  <td>Waiting for blockchain confirmation</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td><strong>confirmed</strong></td>
+                  <td>Transaction confirmed but processing</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td><strong>completed</strong></td>
+                  <td>Successfully completed</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td><strong>failed</strong></td>
+                  <td>Transaction failed - see error details</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Reference: Marketplace -->
+    <div id="marketplace" class="content-card">
+      <div class="card-title"><i class="fas fa-store"></i> Marketplace API</div>
+      <div class="card-subtitle">Trading and pricing endpoints for carbon credit marketplace</div>
+      <div class="divider"></div>
+      
+      <div class="section-title">List Credits for Sale</div>
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method post">POST</span>
+          <span class="endpoint-url">/v1/marketplace/listings</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>sellerId</td>
+                <td>string</td>
+                <td>Farmer or aggregator identifier</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>credits</td>
+                <td>array</td>
+                <td>Array of credit batches to list</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>pricePerCredit</td>
+                <td>number</td>
+                <td>Price in USD per credit ($5.00 - $150.00)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>description</td>
+                <td>string</td>
+                <td>Marketing description of the credits</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>cobenefits</td>
+                <td>array</td>
+                <td>Additional sustainability benefits</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>minimumPurchase</td>
+                <td>number</td>
+                <td>Minimum credits per transaction</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>listingDuration</td>
+                <td>number</td>
+                <td>Days listing remains active (1-365)</td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Credit Batch Object</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>serialNumbers</td>
+                <td>array</td>
+                <td>VCS registry serial numbers</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>quantity</td>
+                <td>number</td>
+                <td>Number of credits in batch</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>vintageYear</td>
+                <td>number</td>
+                <td>Year of carbon sequestration</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>methodology</td>
+                <td>string</td>
+                <td>Verification methodology (e.g., VCS-VM0017)</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>projectLocation</td>
+                <td>string</td>
+                <td>Geographic origin of credits</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>additionalityProof</td>
+                <td>string</td>
+                <td>Evidence of additionality compliance</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "sellerId": "FARM12345",
+  "credits": [
+    {
+      "serialNumbers": ["KE-VCS-17-001-2025-001-12350000"],
+      "quantity": 25.75,
+      "vintageYear": 2025,
+      "methodology": "VCS-VM0017",
+      "projectLocation": "Kiambu County, Kenya",
+      "additionalityProof": "Baseline assessment demonstrates 40% increase in SOC"
+    }
+  ],
+  "pricePerCredit": 28.50,
+  "description": "Premium agroforestry credits from smallholder coffee farms. Verified biodiversity co-benefits and water conservation.",
+  "cobenefits": [
+    "Biodiversity enhancement", 
+    "Water quality improvement",
+    "Farmer income diversification",
+    "Soil erosion prevention"
+  ],
+  "minimumPurchase": 1.0,
+  "listingDuration": 90
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Success Response (201 Created)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "listingId": "LIST78901",
+    "sellerId": "FARM12345",
+    "totalCredits": 25.75,
+    "pricePerCredit": 28.50,
+    "totalValue": 733.88,
+    "listingFee": 18.35,
+    "netProceeds": 715.53,
+    "status": "active",
+    "listedAt": "2025-07-25T12:00:00Z",
+    "expiresAt": "2025-10-23T12:00:00Z",
+    "marketplaceUrl": "https://marketplace.carbonplatform.io/listing/LIST78901",
+    "estimatedSaleTime": "7-14 days",
+    "marketAnalysis": {
+      "currentMarketPrice": 26.80,
+      "pricePosition": "premium",
+      "demandLevel": "high",
+      "competitorCount": 12
+    }
+  },
+  "message": "Credits successfully listed for sale"
+}
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Browse Available Credits</div>
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method get">GET</span>
+          <span class="endpoint-url">/v1/marketplace/browse</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Query Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>region</td>
+                <td>string</td>
+                <td>Filter by geographic region</td>
+                <td>all</td>
+              </tr>
+              <tr>
+                <td>methodology</td>
+                <td>string</td>
+                <td>Filter by verification methodology</td>
+                <td>all</td>
+              </tr>
+              <tr>
+                <td>vintageYear</td>
+                <td>number</td>
+                <td>Filter by vintage year</td>
+                <td>all</td>
+              </tr>
+              <tr>
+                <td>minPrice</td>
+                <td>number</td>
+                <td>Minimum price per credit</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>maxPrice</td>
+                <td>number</td>
+                <td>Maximum price per credit</td>
+                <td>unlimited</td>
+              </tr>
+              <tr>
+                <td>cobenefits</td>
+                <td>string</td>
+                <td>Filter by co-benefits (comma-separated)</td>
+                <td>all</td>
+              </tr>
+              <tr>
+                <td>page</td>
+                <td>number</td>
+                <td>Page number for pagination</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>limit</td>
+                <td>number</td>
+                <td>Results per page (max 100)</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>sortBy</td>
+                <td>string</td>
+                <td>"price", "vintage", "quantity", "listed_date"</td>
+                <td>price</td>
+              </tr>
+              <tr>
+                <td>sortOrder</td>
+                <td>string</td>
+                <td>"asc" or "desc"</td>
+                <td>asc</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+            <pre><code class="language-bash">
+GET /v1/marketplace/browse?region=Kenya&methodology=VCS-VM0017&minPrice=20&maxPrice=40&cobenefits=biodiversity&page=1&limit=10&sortBy=price&sortOrder=asc
+            </code></pre>
+          </div>
+
+          <div class="section-title">Success Response (200 OK)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "listings": [
+      {
+        "listingId": "LIST78901",
+        "sellerId": "FARM12345",
+        "sellerProfile": {
+          "name": "Jane Wanjiku Doe",
+          "location": "Kiambu County, Kenya",
+          "farmSize": 5.5,
+          "yearsInProgram": 3,
+          "totalCreditsSold": 156.25,
+          "rating": 4.8,
+          "certifications": ["Organic", "Fairtrade"]
+        },
+        "credits": {
+          "quantity": 25.75,
+          "vintageYear": 2025,
+          "methodology": "VCS-VM0017",
+          "verificationBody": "SCS Global Services",
+          "projectType": "Agroforestry",
+          "serialNumbers": ["KE-VCS-17-001-2025-001-12350000"]
+        },
+        "pricing": {
+          "pricePerCredit": 28.50,
+          "totalValue": 733.88,
+          "minimumPurchase": 1.0,
+          "bulkDiscounts": [
+            { "minQuantity": 10, "discount": 5 },
+            { "minQuantity": 25, "discount": 10 }
+          ]
+        },
+        "cobenefits": [
+          {
+            "type": "Biodiversity enhancement",
+            "description": "Increased bird species count by 45%",
+            "evidence": "https://biodiversity-report.ipfs.io/QmX1..."
+          },
+          {
+            "type": "Water conservation",
+            "description": "35% reduction in irrigation water use",
+            "evidence": "https://water-study.ipfs.io/QmY2..."
+          }
+        ],
+        "impact": {
+          "treesPlanted": 2400,
+          "soilCarbonIncrease": "2.3%",
+          "farmersSupported": 1,
+          "communityBeneficiaries": 450
+        },
+        "listedAt": "2025-07-25T12:00:00Z",
+        "expiresAt": "2025-10-23T12:00:00Z",
+        "status": "active"
+      }
+    ],
+    "pagination": {
+      "currentPage": 1,
+      "totalPages": 5,
+      "totalResults": 47,
+      "resultsPerPage": 10,
+      "hasNextPage": true,
+      "hasPreviousPage": false
+    },
+    "marketSummary": {
+      "averagePrice": 31.25,
+      "priceRange": {
+        "min": 18.50,
+        "max": 65.00
+      },
+      "totalAvailableCredits": 12847.35,
+      "totalListings": 47,
+      "topRegions": [
+        { "region": "Kenya", "count": 18 },
+        { "region": "Uganda", "count": 15 },
+        { "region": "Tanzania", "count": 14 }
+      ]
+    }
+  }
+}
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Purchase Credits</div>
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method post">POST</span>
+          <span class="endpoint-url">/v1/marketplace/purchase</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Request Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>listingId</td>
+                <td>string</td>
+                <td>Target listing identifier</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>quantity</td>
+                <td>number</td>
+                <td>Number of credits to purchase</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>buyerWallet</td>
+                <td>string</td>
+                <td>ICP wallet address for credit delivery</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>paymentMethod</td>
+                <td>string</td>
+                <td>"crypto" or "fiat"</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>retirementIntent</td>
+                <td>boolean</td>
+                <td>Whether credits will be immediately retired</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>retirementReason</td>
+                <td>string</td>
+                <td>Purpose for retirement (if applicable)</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>buyerInfo</td>
+                <td>object</td>
+                <td>Buyer identification and contact details</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Buyer Info Object</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>string</td>
+                <td>Individual or organization name</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>email</td>
+                <td>string</td>
+                <td>Contact email address</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>organization</td>
+                <td>string</td>
+                <td>Company or institution name</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>country</td>
+                <td>string</td>
+                <td>Country of residence/operations</td>
+                <td><span class="required">Yes</span></td>
+              </tr>
+              <tr>
+                <td>intendedUse</td>
+                <td>string</td>
+                <td>Purpose for credit purchase</td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Example Request</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "listingId": "LIST78901",
+  "quantity": 10.5,
+  "buyerWallet": "wxyz-1234-5678-9012-abcd-efgh-ijkl-mnop",
+  "paymentMethod": "crypto",
+  "retirementIntent": true,
+  "retirementReason": "Corporate carbon neutrality - Q3 2025 emissions offset",
+  "buyerInfo": {
+    "name": "GreenTech Solutions Ltd",
+    "email": "sustainability@greentech.co.ke",
+    "organization": "GreenTech Solutions Ltd",
+    "country": "Kenya",
+    "intendedUse": "Corporate carbon offsetting"
+  }
+}
+            </code></pre>
+          </div>
+
+          <div class="section-title">Success Response (201 Created)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "purchaseId": "PUR34567",
+    "listingId": "LIST78901",
+    "quantity": 10.5,
+    "pricePerCredit": 28.50,
+    "subtotal": 299.25,
+    "fees": {
+      "platformFee": 7.48,
+      "networkFee": 0.15,
+      "totalFees": 7.63
+    },
+    "totalAmount": 306.88,
+    "paymentInstructions": {
+      "method": "crypto",
+      "walletAddress": "carbon-escrow-wallet-123456",
+      "amount": 306.88,
+      "currency": "ICP",
+      "timeLimit": "15 minutes"
+    },
+    "escrowDetails": {
+      "escrowId": "ESC89012",
+      "holdPeriod": "72 hours",
+      "releaseConditions": "Payment confirmation and credit transfer"
+    },
+    "expectedDelivery": "2-4 hours after payment confirmation",
+    "transactionTimeline": [
+      {
+        "step": "Payment",
+        "status": "pending",
+        "description": "Awaiting payment to escrow wallet"
+      },
+      {
+        "step": "Verification",
+        "status": "pending", 
+        "description": "Payment verification and fraud checks"
+      },
+      {
+        "step": "Transfer",
+        "status": "pending",
+        "description": "Credit transfer to buyer wallet"
+      },
+      {
+        "step": "Settlement",
+        "status": "pending",
+        "description": "Payment release to seller"
+      }
+    ],
+    "supportContact": {
+      "email": "support@carbonplatform.io",
+      "phone": "+254-700-123456",
+      "hours": "24/7"
+    }
+  }
+}
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Market Analytics</div>
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method get">GET</span>
+          <span class="endpoint-url">/v1/marketplace/analytics</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="section-title">Query Parameters</div>
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>timeframe</td>
+                <td>string</td>
+                <td>"7d", "30d", "90d", "1y", "all"</td>
+                <td>30d</td>
+              </tr>
+              <tr>
+                <td>region</td>
+                <td>string</td>
+                <td>Specific region analysis</td>
+                <td>all</td>
+              </tr>
+              <tr>
+                <td>methodology</td>
+                <td>string</td>
+                <td>Methodology-specific metrics</td>
+                <td>all</td>
+              </tr>
+              <tr>
+                <td>metric</td>
+                <td>string</td>
+                <td>"prices", "volume", "demand", "supply"</td>
+                <td>all</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">Success Response (200 OK)</div>
+          <div class="code-block">
+            <pre><code class="language-json">
+{
+  "status": "success",
+  "data": {
+    "timeframe": "30d",
+    "generatedAt": "2025-07-25T13:00:00Z",
+    "marketOverview": {
+      "totalTransactionValue": 2847293.50,
+      "totalCreditsTraded": 98547.25,
+      "averagePrice": 28.89,
+      "priceChange30d": 12.5,
+      "volumeChange30d": 8.3,
+      "activeListings": 347,
+      "completedTransactions": 1205
+    },
+    "priceAnalytics": {
+      "currentAveragePrice": 28.89,
+      "priceRange": {
+        "min": 15.20,
+        "max": 85.00,
+        "median": 26.50
+      },
+      "priceHistory": [
+        { "date": "2025-06-25", "price": 25.73 },
+        { "date": "2025-07-01", "price": 26.12 },
+        { "date": "2025-07-08", "price": 27.45 },
+        { "date": "2025-07-15", "price": 28.21 },
+        { "date": "2025-07-22", "price": 28.89 }
+      ],
+      "methodologyPricing": [
+        { "methodology": "VCS-VM0017", "averagePrice": 32.45, "volume": 25648.30 },
+        { "methodology": "VCS-VM0024", "averagePrice": 28.12, "volume": 18923.75 },
+        { "methodology": "Gold Standard", "averagePrice": 41.75, "volume": 12547.80 }
+      ]
+    },
+    "regionalAnalytics": [
+      {
+        "region": "Kenya",
+        "totalCredits": 45234.50,
+        "averagePrice": 29.75,
+        "priceChange": 11.2,
+        "topPractices": ["Agroforestry", "No-till", "Cover cropping"],
+        "farmersActive": 1247
+      },
+      {
+        "region": "Uganda", 
+        "totalCredits": 32156.25,
+        "averagePrice": 27.85,
+        "priceChange": 15.8,
+        "topPractices": ["Agroforestry", "Improved fallow", "Composting"],
+        "farmersActive": 856
+      }
+    ],
+    "demandIndicators": {
+      "buyerTypes": [
+        { "type": "Corporations", "percentage": 45.2, "growth": 18.3 },
+        { "type": "Governments", "percentage": 28.7, "growth": 12.1 },
+        { "type": "Individuals", "percentage": 16.5, "growth": 31.4 },
+        { "type": "NGOs", "percentage": 9.6, "growth": 8.7 }
+      ],
+      "sectorDemand": [
+        { "sector": "Technology", "percentage": 32.1 },
+        { "sector": "Manufacturing", "percentage": 24.8 },
+        { "sector": "Aviation", "percentage": 18.5 },
+        { "sector": "Energy", "percentage": 14.2 },
+        { "sector": "Other", "percentage": 10.4 }
+      ]
+    },
+    "qualityMetrics": {
+      "averageRating": 4.6,
+      "verificationSuccess": 98.7,
+      "customerSatisfaction": 4.8,
+      "repeatPurchaseRate": 67.3
+    },
+    "marketPredictions": {
+      "nextMonthPriceEstimate": {
+        "low": 29.50,
+        "high": 32.75,
+        "confidence": 0.78
+      },
+      "supplyProjection": {
+        "expectedNewCredits": 15000,
+        "seasonalFactors": "Post-harvest verification cycle",
+        "growthRate": "22% annually"
+      }
+    }
+  }
+}
+            </code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Marketplace Features:</strong> Our integrated marketplace provides real-time price discovery, automated escrow services, and comprehensive buyer protection. All transactions are recorded on the ICP blockchain for full transparency and immutability.
+      </div>
+    </div>
+
+    <!-- Case Studies -->
+    <div id="case-studies" class="content-card">
+      <div class="card-title"><i class="fas fa-file-alt"></i> Farmer Success Stories</div>
+      <div class="card-subtitle">Real-world examples of carbon credit success in East Africa</div>
+      <div class="divider"></div>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-user"></i></div>
+          <div class="feature-title">John Kimani - Kiambu County, Kenya</div>
+          <div class="feature-description">
+            <strong>Farm Size:</strong> 3.2 hectares<br>
+            <strong>Practices:</strong> Agroforestry, No-till, Cover cropping<br>
+            <strong>Annual Credits:</strong> 18.5 tons CO₂e<br>
+            <strong>Revenue Increase:</strong> 42% ($1,247 additional income)<br>
+            <strong>Quote:</strong> <em>"The carbon program transformed my farm. Not only am I earning more, but my soil is healthier and my crops are more resilient to droughts."</em>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
+          <div class="feature-title">Nakuru Farmers Cooperative - 250 Members</div>
+          <div class="feature-description">
+            <strong>Total Area:</strong> 847 hectares<br>
+            <strong>Practices:</strong> Rotational grazing, Silvopasture<br>
+            <strong>Annual Credits:</strong> 2,156 tons CO₂e<br>
+            <strong>Collective Revenue:</strong> $64,680 annually<br>
+            <strong>Impact:</strong> Funded new storage facilities, solar irrigation systems, and member training programs.
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+          <div class="feature-title">Sarah Nalwoga - Bugiri District, Uganda</div>
+          <div class="feature-description">
+            <strong>Farm Size:</strong> 1.8 hectares<br>
+            <strong>Practices:</strong> Improved fallow, Composting<br>
+            <strong>Annual Credits:</strong> 12.3 tons CO₂e<br>
+            <strong>Revenue Increase:</strong> 35% ($689 additional income)<br>
+            <strong>Achievement:</strong> First female farmer in her district to reach 20+ tons total credits sold.
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Impact Metrics Across All Farmers</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">89%</span>
+          <span class="stat-label">Increased Crop Yields</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">76%</span>
+          <span class="stat-label">Reduced Input Costs</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">94%</span>
+          <span class="stat-label">Improved Soil Health</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">67%</span>
+          <span class="stat-label">Better Drought Resilience</span>
+        </div>
+      </div>
+
+      <div class="success-box">
+        <strong>Long-term Benefits:</strong> Farmers participating for 3+ years report average income increases of 58%, with 23% higher crop yields and 41% reduction in fertilizer costs due to improved soil health.
+      </div>
+    </div>
+
+    <!-- Carbon Calculator -->
+    <div id="calculator" class="content-card">
+      <div class="card-title"><i class="fas fa-calculator"></i> Interactive Carbon Calculator</div>
+      <div class="card-subtitle">Estimate your potential carbon credits and earnings</div>
+      <div class="divider"></div>
+      
+      <div class="section-content">
+        <p>Use our interactive calculator to estimate potential carbon sequestration and earnings from your farm:</p>
+      </div>
+
+      <div style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 30px; border-radius: 12px; margin: 20px 0;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 25px;">
+          
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--dark);">Region</label>
+            <select id="region" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 16px;">
+              <option value="">Select Region</option>
+              <option value="kenya">Kenya</option>
+              <option value="uganda">Uganda</option>
+              <option value="tanzania">Tanzania</option>
+              <option value="ghana">Ghana</option>
+            </select>
+          </div>
+          
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--dark);">Current Practices</label>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <label style="display: flex; align-items: center; font-weight: normal;">
+                <input type="checkbox" id="notill" style="margin-right: 8px;"> No-till
+              </label>
+              <label style="display: flex; align-items: center; font-weight: normal;">
+                <input type="checkbox" id="agroforestry" style="margin-right: 8px;"> Agroforestry
+              </label>
+              <label style="display: flex; align-items: center; font-weight: normal;">
+                <input type="checkbox" id="covercrops" style="margin-right: 8px;"> Cover Crops
+              </label>
+              <label style="display: flex; align-items: center; font-weight: normal;">
+                <input type="checkbox" id="composting" style="margin-right: 8px;"> Composting
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--dark);">Implementation Level</label>
+            <select id="implementation" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 16px;">
+              <option value="">Select Level</option>
+              <option value="0.6">Basic (60% implementation)</option>
+              <option value="0.8">Good (80% implementation)</option>
+              <option value="1.0">Excellent (100% implementation)</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="calculateCarbon()" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;">
+          Calculate Carbon Potential
+        </button>
+
+        <div id="calculatorResults" style="margin-top: 25px; display: none;">
+          <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 20px;">Your Carbon Credit Potential</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+              <div style="text-align: center; padding: 15px; background: rgba(13, 148, 136, 0.1); border-radius: 8px;">
+                <div id="annualCredits" style="font-size: 24px; font-weight: 700; color: var(--primary);">0</div>
+                <div style="font-size: 14px; color: var(--gray);">Annual Credits (tons CO₂e)</div>
+              </div>
+              <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                <div id="annualRevenue" style="font-size: 24px; font-weight: 700; color: var(--success);">$0</div>
+                <div style="font-size: 14px; color: var(--gray);">Annual Revenue</div>
+              </div>
+              <div style="text-align: center; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                <div id="fiveYearTotal" style="font-size: 24px; font-weight: 700; color: var(--info);">$0</div>
+                <div style="font-size: 14px; color: var(--gray);">5-Year Total</div>
+              </div>
+            </div>
+
+            <div id="practiceBreakdown" style="margin-top: 20px;"></div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
+              <p style="margin: 0; color: var(--secondary); font-size: 14px;">
+                <strong>Note:</strong> These are estimates based on average regional performance. Actual results may vary based on soil conditions, climate, and implementation quality. A baseline assessment is required for accurate projections.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function calculateCarbon() {
+          const farmSize = parseFloat(document.getElementById('farmSize').value) || 0;
+          const region = document.getElementById('region').value;
+          const implementation = parseFloat(document.getElementById('implementation').value) || 0;
+          
+          const practices = {
+            notill: document.getElementById('notill').checked,
+            agroforestry: document.getElementById('agroforestry').checked,
+            covercrops: document.getElementById('covercrops').checked,
+            composting: document.getElementById('composting').checked
+          };
+
+          if (!farmSize || !region || !implementation) {
+            alert('Please fill in all required fields');
+            return;
+          }
+
+          // Regional multipliers
+          const regionalMultipliers = {
+            kenya: 1.0,
+            uganda: 0.9,
+            tanzania: 0.95,
+            ghana: 1.1
+          };
+
+          // Practice sequestration rates (tons CO2e/ha/year)
+          const practiceRates = {
+            notill: 0.8,
+            agroforestry: 4.2,
+            covercrops: 1.1,
+            composting: 0.9
+          };
+
+          let totalSequestration = 0;
+          let practiceDetails = [];
+
+          Object.keys(practices).forEach(practice => {
+            if (practices[practice]) {
+              const rate = practiceRates[practice] * regionalMultipliers[region] * implementation;
+              const totalForPractice = rate * farmSize;
+              totalSequestration += totalForPractice;
+              
+              practiceDetails.push({
+                name: practice.charAt(0).toUpperCase() + practice.slice(1).replace(/([A-Z])/g, ' $1'),
+                rate: rate.toFixed(2),
+                total: totalForPractice.toFixed(2)
+              });
+            }
+          });
+
+          // Apply conservative buffer (20%)
+          const eligibleCredits = totalSequestration * 0.8;
+          
+          // Calculate revenue (average $30 per credit)
+          const avgPrice = 30;
+          const annualRevenue = eligibleCredits * avgPrice;
+          const fiveYearTotal = annualRevenue * 5;
+
+          // Display results
+          document.getElementById('annualCredits').textContent = eligibleCredits.toFixed(1);
+          document.getElementById('annualRevenue').textContent = annualRevenue.toLocaleString();
+          document.getElementById('fiveYearTotal').textContent = fiveYearTotal.toLocaleString();
+
+          // Practice breakdown
+          let breakdownHtml = '<h4 style="color: var(--primary); margin-bottom: 15px;">Practice Breakdown:</h4>';
+          practiceDetails.forEach(practice => {
+            breakdownHtml += `
+              <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border);">
+                <span>${practice.name}</span>
+                <span><strong>${practice.total} tons CO₂e/year</strong></span>
+              </div>
+            `;
+          });
+          
+          document.getElementById('practiceBreakdown').innerHTML = breakdownHtml;
+          document.getElementById('calculatorResults').style.display = 'block';
+        }
+      </script>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faq" class="content-card">
+      <div class="card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
+      <div class="card-subtitle">Common questions from farmers about carbon credits</div>
+      <div class="divider"></div>
+      
+      <div style="margin: 25px 0;">
+        <div style="border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
+          
+          <div style="background: var(--light); padding: 20px; border-bottom: 1px solid var(--border); cursor: pointer;" onclick="toggleFAQ('faq1')">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--dark);">What are carbon credits and how do they work?</h4>
+              <i id="faq1-icon" class="fas fa-chevron-down" style="color: var(--primary);"></i>
+            </div>
+          </div>
+          <div id="faq1" style="display: none; padding: 20px; background: white;">
+            <p style="margin: 0; line-height: 1.6; color: var(--secondary);">
+              Carbon credits represent one metric ton of CO₂ equivalent that has been removed from the atmosphere or prevented from being emitted. When farmers adopt climate-smart practices like agroforestry or no-till farming, they increase carbon storage in soil and biomass. These verified carbon reductions can be converted into tradeable credits that companies purchase to offset their emissions. Each credit you generate represents real environmental impact and provides additional income for sustainable farming practices.
+            </p>
+          </div>
+
+          <div style="background: var(--light); padding: 20px; border-bottom: 1px solid var(--border); cursor: pointer;" onclick="toggleFAQ('faq2')">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--dark);">How much money can I earn from carbon credits?</h4>
+              <i id="faq2-icon" class="fas fa-chevron-down" style="color: var(--primary);"></i>
+            </div>
+          </div>
+          <div id="faq2" style="display: none; padding: 20px; background: white;">
+            <p style="margin: 0 0 15px 0; line-height: 1.6; color: var(--secondary);">
+              Earnings depend on your farm size, practices implemented, and local conditions. Typical ranges are:
+            </p>
+            <ul style="margin: 0; padding-left: 20px; color: var(--secondary);">
+              <li><strong>Small farms (0.5-2 ha):</strong> $150-800 per year</li>
+              <li><strong>Medium farms (2-10 ha):</strong> $800-4,000 per year</li>
+              <li><strong>Large farms (10+ ha):</strong> $4,000+ per year</li>
+            </ul>
+            <p style="margin: 15px 0 0 0; line-height: 1.6; color: var(--secondary);">
+              Agroforestry typically generates the highest returns, while practices like no-till provide steady, long-term income. Most farmers see 25-45% increase in total farm income within 3 years.
+            </p>
+          </div>
+
+          <div style="background: var(--light); padding: 20px; border-bottom: 1px solid var(--border); cursor: pointer;" onclick="toggleFAQ('faq3')">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--dark);">What practices qualify for carbon credits?</h4>
+              <i id="faq3-icon" class="fas fa-chevron-down" style="color: var(--primary);"></i>
+            </div>
+          </div>
+          <div id="faq3" style="display: none; padding: 20px; background: white;">
+            <p style="margin: 0 0 15px 0; line-height: 1.6; color: var(--secondary);">
+              We support a wide range of climate-smart agricultural practices:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 15px 0;">
+              <div>
+                <strong style="color: var(--primary);">Soil Management:</strong>
+                <ul style="margin: 5px 0; padding-left: 15px;">
+                  <li>No-till farming</li>
+                  <li>Reduced tillage</li>
+                  <li>Cover cropping</li>
+                  <li>Crop rotation</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color: var(--primary);">Agroforestry:</strong>
+                <ul style="margin: 5px 0; padding-left: 15px;">
+                  <li>Tree intercropping</li>
+                  <li>Silvopasture</li>
+                  <li>Windbreaks</li>
+                  <li>Buffer strips</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color: var(--primary);">Other Practices:</strong>
+                <ul style="margin: 5px 0; padding-left: 15px;">
+                  <li>Composting</li>
+                  <li>Improved grazing</li>
+                  <li>Wetland restoration</li>
+                  <li>Efficient irrigation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--light); padding: 20px; border-bottom: 1px solid var(--border); cursor: pointer;" onclick="toggleFAQ('faq4')">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--dark);">How long does it take to get paid?</h4>
+              <i id="faq4-icon" class="fas fa-chevron-down" style="color: var(--primary);"></i>
+            </div>
+          </div>
+          <div id="faq4" style="display: none; padding: 20px; background: white;">
+            <p style="margin: 0; line-height: 1.6; color: var(--secondary);">
+              The payment timeline depends on verification requirements:<br><br>
+              <strong>Initial Setup:</strong> 4-6 weeks for registration and baseline measurements<br>
+              <strong>First Payment:</strong> 6-12 months after implementation (varies by practice)<br>
+              <strong>Ongoing Payments:</strong> Annual payments after verification<br>
+              <strong>Marketplace Sales:</strong> 2-14 days after listing credits for sale<br><br>
+              Fast-growing practices like cover crops can generate credits within 6 months, while tree-based systems may take 12-18 months for first payments but offer higher long-term returns.
+            </p>
+          </div>
+
+          <div style="background: var(--light); padding: 20px; border-bottom: 1px solid var(--border); cursor: pointer;" onclick="toggleFAQ('faq5')">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--dark);">Do I need to change all my farming practices?</h4>
+              <i id="faq5-icon" class="fas fa-chevron-down" style="color: var(--primary);"></i>
+            </div>
+          </div>
+          <div id="faq5" style="display: none; padding: 20px; background: white;">
+            <p style="margin: 0; line-height: 1.6; color: var(--secondary);">
+              No! You can start with just one or two practices and gradually add more. Many successful farmers begin with:
+              <br><br>
+              <strong>Beginner approach:</strong> Start with cover crops or reduced tillage on part of your land<br>
+              <strong>Intermediate:</strong> Add composting and crop rotation<br>
+              <strong>Advanced:</strong> Implement agroforestry systems<br><br>
+              Our technical team provides training and support to help you transition gradually while maintaining your current income. You can implement practices on test plots first to see results before expanding.
+            </p>
+          </div>
+
+          <div style="background: var(--light); padding: 20px; cursor: pointer;" onclick="toggleFAQ('faq6')">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="margin: 0; color: var(--dark);">What if I'm not tech-savvy? Can I still participate?</h4>
+              <i id="faq6-icon" class="fas fa-chevron-down" style="color: var(--primary);"></i>
+            </div>
+          </div>
+          <div id="faq6" style="display: none; padding: 20px; background: white;">
+            <p style="margin: 0; line-height: 1.6; color: var(--secondary);">
+              Absolutely! We provide extensive support for farmers at all technology levels:<br><br>
+              <strong>On-ground support:</strong> Local field officers provide hands-on assistance<br>
+              <strong>Training programs:</strong> In-person workshops in local languages<br>
+              <strong>Simple tools:</strong> Mobile apps designed for basic phones<br>
+              <strong>Community groups:</strong> Farmer cooperatives for peer learning<br>
+              <strong>24/7 support:</strong> Phone and SMS support in Swahili, English, and local languages<br><br>
+              Many of our most successful farmers started with minimal technology experience. We'll guide you through every step of the process.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function toggleFAQ(faqId) {
+          const content = document.getElementById(faqId);
+          const icon = document.getElementById(faqId + '-icon');
+          
+          if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'block';
+            icon.className = 'fas fa-chevron-up';
+          } else {
+            content.style.display = 'none';
+            icon.className = 'fas fa-chevron-down';
+          }
+        }
+      </script>
+    </div>
+
+    <!-- Tutorials Section -->
+    <div id="tutorials" class="content-card">
+      <div class="card-title"><i class="fas fa-book"></i> Step-by-Step Tutorials</div>
+      <div class="card-subtitle">Practical guides for implementing carbon credit practices</div>
+      <div class="divider"></div>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-play-circle"></i></div>
+          <div class="feature-title">Setting Up No-Till Farming</div>
+          <div class="feature-description">
+            Complete 6-week program covering equipment, soil preparation, seeding techniques, and weed management. Includes video demonstrations and troubleshooting guide.
+            <br><br>
+            <strong>Duration:</strong> 6 weeks<br>
+            <strong>Difficulty:</strong> Beginner<br>
+            <strong>Equipment needed:</strong> Basic hand tools
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tree"></i></div>
+          <div class="feature-title">Agroforestry System Design</div>
+          <div class="feature-description">
+            Learn to design and establish tree-crop systems for maximum carbon sequestration and productivity. Covers species selection, spacing, and management.
+            <br><br>
+            <strong>Duration:</strong> 8 weeks<br>
+            <strong>Difficulty:</strong> Intermediate<br>
+            <strong>Equipment needed:</strong> Measuring tools, nursery setup
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+          <div class="feature-title">Cover Crop Management</div>
+          <div class="feature-description">
+            Master cover crop selection, establishment, and termination for different farming systems. Includes season planning and integration with cash crops.
+            <br><br>
+            <strong>Duration:</strong> 4 weeks<br>
+            <strong>Difficulty:</strong> Beginner<br>
+            <strong>Equipment needed:</strong> Seeds, basic tools
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-recycle"></i></div>
+          <div class="feature-title">Composting for Carbon</div>
+          <div class="feature-description">
+            Build high-quality compost systems that maximize carbon retention and soil health benefits. Covers materials, ratios, monitoring, and application.
+            <br><br>
+            <strong>Duration:</strong> 3 weeks<br>
+            <strong>Difficulty:</strong> Beginner<br>
+            <strong>Equipment needed:</strong> Organic materials, thermometer
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div class="feature-title">Using the Mobile App</div>
+          <div class="feature-description">
+            Complete guide to our farmer mobile app for reporting practices, uploading photos, tracking progress, and managing your carbon credit account.
+            <br><br>
+            <strong>Duration:</strong> 2 weeks<br>
+            <strong>Difficulty:</strong> Beginner<br>
+            <strong>Equipment needed:</strong> Smartphone or basic phone
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="feature-title">Soil Health Monitoring</div>
+          <div class="feature-description">
+            Learn simple techniques for monitoring soil organic matter, compaction, and biological activity to optimize carbon sequestration practices.
+            <br><br>
+            <strong>Duration:</strong> 3 weeks<br>
+            <strong>Difficulty:</strong> Intermediate<br>
+            <strong>Equipment needed:</strong> Soil auger, pH strips, jar
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Learning Pathways</div>
+      <div class="section-content">
+        <div style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(13, 148, 136, 0.05) 100%); padding: 25px; border-radius: 12px; margin: 20px 0;">
+          <h4 style="color: var(--primary); margin-bottom: 15px;">🌱 Beginner Pathway (3-4 months)</h4>
+          <p style="margin: 0 0 10px 0; color: var(--secondary);">Perfect for farmers new to climate-smart agriculture:</p>
+          <ol style="margin: 0; padding-left: 20px; color: var(--secondary);">
+            <li>Using the Mobile App (Week 1-2)</li>
+            <li>Cover Crop Management (Week 3-6)</li>
+            <li>Composting for Carbon (Week 7-9)</li>
+            <li>Setting Up No-Till Farming (Week 10-15)</li>
+          </ol>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%); padding: 25px; border-radius: 12px; margin: 20px 0;">
+          <h4 style="color: var(--warning); margin-bottom: 15px;">🚀 Advanced Pathway (6-8 months)</h4>
+          <p style="margin: 0 0 10px 0; color: var(--secondary);">For experienced farmers ready to maximize carbon potential:</p>
+          <ol style="margin: 0; padding-left: 20px; color: var(--secondary);">
+            <li>Soil Health Monitoring (Month 1)</li>
+            <li>Agroforestry System Design (Month 2-3)</li>
+            <li>Advanced Integration Techniques (Month 4-5)</li>
+            <li>Business Planning & Marketing (Month 6)</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Interactive Learning:</strong> All tutorials include interactive quizzes, progress tracking, and direct connection to field officers for personalized support. Complete the pathway to earn certification and access to premium markets.
+      </div>
+    </div>
+
+    <!-- Contact Support -->
+    <div id="contact" class="content-card">
+      <div class="card-title"><i class="fas fa-phone"></i> Contact Support</div>
+      <div class="card-subtitle">Get help from our team of agricultural and technical experts</div>
+      <div class="divider"></div>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <div class="feature-title">24/7 Farmer Hotline</div>
+          <div class="feature-description">
+            <strong>Phone:</strong> +254-700-CARBON (+254-700-227266)<br>
+            <strong>WhatsApp:</strong> +254-700-227266<br>
+            <strong>SMS:</strong> Text "HELP" to 29429<br>
+            <strong>Languages:</strong> English, Swahili, Kikuyu, Luo, French<br>
+            <strong>Response Time:</strong> Immediate for urgent issues
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-envelope"></i></div>
+          <div class="feature-title">Email Support</div>
+          <div class="feature-description">
+            <strong>General Support:</strong> farmers@carbonplatform.io<br>
+            <strong>Technical Issues:</strong> tech@carbonplatform.io<br>
+            <strong>Payment Questions:</strong> payments@carbonplatform.io<br>
+            <strong>Verification:</strong> verify@carbonplatform.io<br>
+            <strong>Response Time:</strong> 4-6 hours during business days
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
+          <div class="feature-title">Field Officers</div>
+          <div class="feature-description">
+            <strong>Coverage:</strong> All participating regions<br>
+            <strong>Services:</strong> On-farm visits, training, problem-solving<br>
+            <strong>Scheduling:</strong> Call hotline or use mobile app<br>
+            <strong>Languages:</strong> Local languages + English/Swahili<br>
+            <strong>Response Time:</strong> 1-3 days for visit scheduling
+          </div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-video"></i></div>
+          <div class="feature-title">Video Consultations</div>
+          <div class="feature-description">
+            <strong>Platform:</strong> WhatsApp Video, Zoom, or phone call<br>
+            <strong>Specialists:</strong> Agronomists, carbon experts, tech support<br>
+            <strong>Booking:</strong> Through mobile app or hotline<br>
+            <strong>Duration:</strong> 15-45 minutes<br>
+            <strong>Cost:</strong> Free for registered farmers
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Regional Support Centers</div>
+      <div class="section-content">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+          
+          <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--primary); margin-bottom: 10px;">🇰🇪 Kenya Hub - Nairobi</h4>
+            <p style="margin: 0; color: var(--secondary); line-height: 1.6;">
+              <strong>Address:</strong> Carbon House, Westlands, Nairobi<br>
+              <strong>Phone:</strong> +254-20-1234567<br>
+              <strong>Counties Served:</strong> Nairobi, Kiambu, Nakuru, Meru, Embu<br>
+              <strong>Staff:</strong> 15 field officers, 3 technical specialists
+            </p>
+          </div>
+          
+          <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--primary); margin-bottom: 10px;">🇺🇬 Uganda Hub - Kampala</h4>
+            <p style="margin: 0; color: var(--secondary); line-height: 1.6;">
+              <strong>Address:</strong> Plot 123, Industrial Area, Kampala<br>
+              <strong>Phone:</strong> +256-41-234567<br>
+              <strong>Districts Served:</strong> Central, Eastern, Western regions<br>
+              <strong>Staff:</strong> 12 field officers, 2 technical specialists
+            </p>
+          </div>
+          
+          <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--primary); margin-bottom: 10px;">🇹🇿 Tanzania Hub - Arusha</h4>
+             margin-bottom: 8px; color: var(--dark);">Farm Size (hectares)</label>
+            <input type="number" id="farmSize" placeholder="e.g., 5.5" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 16px;">
+          </div>
+          
+          <!-- Removed broken label tag before Error Codes section -->
+    <!-- Error Codes Section Start -->
+    <div id="errors" class="content-card">
+      <h2><i class="fas fa-exclamation-triangle"></i> Error Codes</h2>
+      <p>Below are common error codes returned by the Carbon Credit Platform API, their meanings, and suggested actions.</p>
+      <table class="error-table">
+        <thead>
+          <tr>
+            <th>Error Code</th>
+            <th>Description</th>
+            <th>Suggested Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>400</td>
+            <td>Bad Request</td>
+            <td>Check your request parameters for missing or invalid values.</td>
+          </tr>
+          <tr>
+            <td>401</td>
+            <td>Unauthorized</td>
+            <td>Ensure your API key or token is valid and included in the request.</td>
+          </tr>
+          <tr>
+            <td>403</td>
+            <td>Forbidden</td>
+            <td>Your credentials do not have permission to access this resource.</td>
+          </tr>
+          <tr>
+            <td>404</td>
+            <td>Not Found</td>
+            <td>The requested resource does not exist. Check the endpoint URL.</td>
+          </tr>
+          <tr>
+            <td>409</td>
+            <td>Conflict</td>
+            <td>There is a conflict with the current state of the resource. Review your request logic.</td>
+          </tr>
+          <tr>
+            <td>429</td>
+            <td>Too Many Requests</td>
+            <td>You have exceeded the rate limit. Wait and try again later.</td>
+          </tr>
+          <tr>
+            <td>500</td>
+            <td>Internal Server Error</td>
+            <td>Server encountered an error. Try again or contact support if the issue persists.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Error Codes Section End -->
+<!-- Footer Start -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <strong>Carbon Credit Platform</strong> &copy; 2025. All rights reserved.
+    </div>
+    <div class="footer-center">
+      <a href="#" title="Privacy Policy">Privacy Policy</a> |
+      <a href="#" title="Terms of Service">Terms of Service</a>
+    </div>
+    <div class="footer-right">
+      <i class="fas fa-envelope"></i> <a href="mailto:support@carboncredit.com">support@carboncredit.com</a>
+    </div>
+  </div>
+</footer>
+<!-- Footer End -->
+
+</body>
+</html>
